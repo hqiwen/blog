@@ -4,6 +4,13 @@
   <meta charset="utf-8">
   
   
+  <meta name="description" content="本文转载自Here’s why Client-side Rendering Won,如果想获得更好的阅读体验，请阅读原文
+
+1 引言
+我为什么要选这篇文章呢？
+
+十年前，几乎所有网站都使用 ASP、Java、PHP 这类做后端渲染，但后来随着 jQuery、Angular、React、Vue 等 J" />
+  
 
   
   
@@ -11,15 +18,25 @@
   
   
   
-  <title>知秋</title>
+  <title>精读前后端渲染之争 | 知秋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="知秋">
-<meta property="og:url" content="https://hqiwen.github.io/index.html">
+  <meta name="description" content="本文转载自Here’s why Client-side Rendering Won,如果想获得更好的阅读体验，请阅读原文  1 引言 我为什么要选这篇文章呢？  十年前，几乎所有网站都使用 ASP、Java、PHP 这类做后端渲染，但后来随着 jQuery、Angular、React、Vue 等 JS 框架的崛起，开始转向了前端渲染。从 2014 年起又开始流行了同构渲染，号称是未来，集成了前后">
+<meta name="keywords" content="前端渲染,后端渲染">
+<meta property="og:type" content="article">
+<meta property="og:title" content="精读前后端渲染之争">
+<meta property="og:url" content="https://hqiwen.github.io/2017/09/24/前后端渲染对比/index.html">
 <meta property="og:site_name" content="知秋">
+<meta property="og:description" content="本文转载自Here’s why Client-side Rendering Won,如果想获得更好的阅读体验，请阅读原文  1 引言 我为什么要选这篇文章呢？  十年前，几乎所有网站都使用 ASP、Java、PHP 这类做后端渲染，但后来随着 jQuery、Angular、React、Vue 等 JS 框架的崛起，开始转向了前端渲染。从 2014 年起又开始流行了同构渲染，号称是未来，集成了前后">
 <meta property="og:locale" content="中文">
+<meta property="og:image" content="https://hqiwen.github.io/2017/09/24/前后端渲染对比/ca1b6618-2209-11e7-99ae-c2a75ad3dabb.png">
+<meta property="og:image" content="https://hqiwen.github.io/2017/09/24/前后端渲染对比/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d37623034616335636165363466613737343061316466623162663862303963345f622e706e67.png">
+<meta property="og:image" content="https://hqiwen.github.io/2017/09/24/前后端渲染对比/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f5442314a6a6b5151705858585858536158585858585858585858582d323535342d313430302e706e67.png">
+<meta property="og:image" content="https://hqiwen.github.io/2017/09/24/前后端渲染对比/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f54423169614d4d51705858585858766158585858585858585858582d323535342d313335342e706e67.png">
+<meta property="og:updated_time" content="2017-09-24T12:08:28.903Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="知秋">
+<meta name="twitter:title" content="精读前后端渲染之争">
+<meta name="twitter:description" content="本文转载自Here’s why Client-side Rendering Won,如果想获得更好的阅读体验，请阅读原文  1 引言 我为什么要选这篇文章呢？  十年前，几乎所有网站都使用 ASP、Java、PHP 这类做后端渲染，但后来随着 jQuery、Angular、React、Vue 等 JS 框架的崛起，开始转向了前端渲染。从 2014 年起又开始流行了同构渲染，号称是未来，集成了前后">
+<meta name="twitter:image" content="https://hqiwen.github.io/2017/09/24/前后端渲染对比/ca1b6618-2209-11e7-99ae-c2a75ad3dabb.png">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -64,17 +81,15 @@
     </nav>
 </header>
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main">
-  
-    <article id="post-前后端渲染对比" class="post-前后端渲染对比 post type-post status-publish format-standard hentry">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-前后端渲染对比" class="post-前后端渲染对比 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
         
         
   
-    <h1 class="entry-title">
-      <a class="article-title" href="/2017/09/24/前后端渲染对比/">精读前后端渲染之争</a>
+    <h1 class="entry-title article-title">
+      精读前后端渲染之争
     </h1>
   
 
@@ -211,413 +226,20 @@
 </article>
 
 
-
-
-
-
-  
-    <article id="post-为你写诗" class="post-为你写诗 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2017/09/24/为你写诗/">为你写诗</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="https://hqiwen.github.io/2017/09/24/为你写诗/" data-id="cj7y6zrot000160tyc16qxsoh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>站在武科大</p>
-<p>为你写诗</p>
-<p>是夜，带着雨</p>
-<p>朦胧的雾气</p>
-<p>你从雨中闯出来</p>
-<p>站在黄家湖畔</p>
-<p>为你写诗</p>
-<p>梦脱身为湖</p>
-<p>藏着一个美丽的倩影</p>
-<p>站在高高的云端</p>
-<p>为你写诗</p>
-<p>天空无穷</p>
-<p>相思不穷</p>
-<p>站在过去与未来之间</p>
-<p>为你写诗</p>
-<p>点亮的灯火</p>
-<p>点亮的心</p>
-<p>却不知在站那里</p>
-<p>再见到你</p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2017/09/24/为你写诗/">
-    <time datetime="2017-09-24T02:26:50.000Z" class="entry-date">
-        2017-09-24
-    </time>
-</a>
     
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/Poet/">Poet</a>
-  </div>
-
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
     
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-晨" class="post-晨 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2017/09/24/晨/">晨</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="https://hqiwen.github.io/2017/09/24/晨/" data-id="cj7y6zrp3000560ty8d4ybm58" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>晨</p>
-<p>偷着光</p>
-<p>献给了早起的我们</p>
-<p>没有你的早上 一望无际</p>
-<p>带着呆呆的蓝</p>
-<p>钥匙碰转出清脆的乐</p>
-<p>起伏</p>
-<p>像谜一样的切合</p>
-<p>脚下的步伐</p>
-<p>四下里无人</p>
-<p>蹲下来</p>
-<p>在地上写的你的名字</p>
-<p>走过</p>
-<p>这条来时的路</p>
-<p>不止一次往回望</p>
-<p>踩着尘土</p>
-<p>我们走向前去</p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2017/09/24/晨/">
-    <time datetime="2017-09-24T02:24:03.000Z" class="entry-date">
-        2017-09-24
-    </time>
-</a>
     
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/Poet/">Poet</a>
-  </div>
-
+        <span class="nav-next"><a href="/2017/09/24/为你写诗/" rel="next">为你写诗 <span class="meta-nav">→</span></a></span>
     
-    </footer>
-</article>
+</nav><!-- .nav-single -->
 
 
 
 
 
 
-  
-    <article id="post-秋日遐想" class="post-秋日遐想 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2017/09/24/秋日遐想/">秋日遐想</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="https://hqiwen.github.io/2017/09/24/秋日遐想/" data-id="cj7y6zrph000960tyq7ewql35" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>叶子</p>
-<p>黄</p>
-<p>又带着风</p>
-<p>偏偏地</p>
-<p>落下来</p>
-<p>追逐着的</p>
-<p>记忆与成熟</p>
-<p>缓了下来</p>
-<p>梦里</p>
-<p>吟唱着的</p>
-<p>金色的麦田</p>
-<p>荡漾在粼粼的河里</p>
-<p>画</p>
-<p>那么一副色调</p>
-<p>蓝色的忧郁</p>
-<p>沿着路扩展</p>
-<p>谁又曾想</p>
-<p>黑夜的悸动</p>
-<p>藏一个</p>
-<p>不知名的阶梯</p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2017/09/24/秋日遐想/">
-    <time datetime="2017-09-24T02:21:01.000Z" class="entry-date">
-        2017-09-24
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/Poet/">Poet</a>
-  </div>
-
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-滨江" class="post-滨江 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2017/09/23/滨江/">滨江</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="https://hqiwen.github.io/2017/09/23/滨江/" data-id="cj7y6zrpa000660ty5jnptawi" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>月光撒在身上</p>
-<p>给你平添了一份神圣与高洁</p>
-<p>光的影</p>
-<p>鱼的歌</p>
-<p>你就是这里的主宰</p>
-<p>流动的水波是你灵动的眼眸</p>
-<p>横跨的桥梁是你美丽的发带</p>
-<p>两岸的土地随着你延伸开去</p>
-<p>那是你不一样的宽阔情怀</p>
-<p>这里是嘈杂环境里的静地</p>
-<p>我为之欢呼</p>
-<p>对你诉说你的美，你的歌</p>
-<p>你那包容一切的善良</p>
-<p>令人深深着迷</p>
-<p>像一杯酒</p>
-<p>惹人醉，醉了之后还心碎</p>
-<p>我问你你的名字</p>
-<p>你亦沉默不答</p>
-<p>想来</p>
-<p>我不过是个旅人</p>
-<p>这样匆匆</p>
-<p>滨江一夜</p>
-<p>至此无缘再面见你的温柔</p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2017/09/23/滨江/">
-    <time datetime="2017-09-23T05:25:51.000Z" class="entry-date">
-        2017-09-23
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/Poet/">Poet</a>
-  </div>
-
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-插件制作" class="post-插件制作 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2017/09/23/插件制作/">日历插件制作</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="https://hqiwen.github.io/2017/09/23/插件制作/" data-id="cj7y6zrp0000460tysufe6g1b" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h2 id="静态页面的编写"><a href="#静态页面的编写" class="headerlink" title="静态页面的编写"></a>静态页面的编写</h2><p>首先要编写一个合理的静态页面，结构要清晰，变量定义实行语义化，实现组件化的思想</p>
-<p>插件分为两个部分，一个表头，一个表体</p>
-<pre><code>&lt;div class=&quot;ul-datepicker-header&quot;&gt;
-...表头内容 
-&lt;/div&gt;
-
-&lt;div class=&quot;ul-datepicker-body&quot;&gt;
-...表体内容
-&lt;/div&gt;
-</code></pre><hr>
-<h2 id="CSS样式的渲染"><a href="#CSS样式的渲染" class="headerlink" title="CSS样式的渲染"></a>CSS样式的渲染</h2><p>合理的采用特定样式，掌握常见的元素的样式的编写，对于特殊的要给予记忆.</p>
-<p>box-shadow,border,padding 要灵活的运用<br>掌握快速布局的方法，一定要能快速的编写样式</p>
-<hr>
-<h2 id="数据的获取"><a href="#数据的获取" class="headerlink" title="数据的获取"></a>数据的获取</h2><p>怎样去获取一个合理的数据，怎样去处理一个数据，合理的去封装一个数据结构</p>
-<p><strong>在处理年月的时候，如何获取正确格式</strong></p>
-<p>注意到月份的范围是0-11，星期是0-6，当数据越界的时候要实行重置</p>
-<pre><code>myDate.getMonth();       //获取当前月份(0-11,0代表1月)
-myDate.getDate();        //获取当前日(1-31)
-myDate.getDay();         //获取当前星期X(0-6,0代表星期天)
-
-var firstDay = new Date(year, month - 1, 1);
-var firstDayWeekDay = firstDay.getDay();
-if (firstDayWeekDay === 0) firstDayWeekDay = 7;
-//获取一个月的第一天
-
-var lastDayOfLastMonth = new Date(year, month - 1, 0);
-var lastDateOfLastMonth = lastDayOfLastMonth.getDate();
-//前一月的最后一天
-</code></pre><p>返回数据</p>
-<pre><code>return {
-        year:year,
-        month:month,
-        days:ret,
-        /*ret为一个月的数据*/
-    }
-</code></pre><p>暴露变量</p>
-<pre><code>window.datepicker = datepicker//暴露一个全局变量，数据是全局变量的一个属性
-</code></pre><hr>
-<h2 id="数据的调用与渲染"><a href="#数据的调用与渲染" class="headerlink" title="数据的调用与渲染"></a>数据的调用与渲染</h2><p>需要把相应的数据插入到合理的结构中，注意数据的实时性</p>
-<p>结构函数</p>
-<pre><code>datepicker.buildUI = function (year, month){
-    ...编写结构
-}
-</code></pre><p>渲染函数</p>
-<pre><code>datepicker.render = function (direction) {
-    ...把得到的结构渲染出来
-   var html = datepicker.buildUI(year, month);
-   $wrapper = document.querySelector(&apos;.ul-datepicker-wrapper&apos;)
-   if (!$wrapper) {
-       $wrapper = document.createElement(&apos;div&apos;);
-       $wrapper.className = &apos;ul-datepicker-wrapper&apos;;
-   }
-   $wrapper.innerHTML = html;
-
-   document.body.appendChild($wrapper);
-}
-</code></pre><p>功能函数</p>
-<pre><code>datepicker.init = function (input) {
-       ...实现一定的功能
-        datepicker.render();
-        //调渲染
-
-    $input.addEventListener(&apos;click&apos;, function () {
-            ...监控输入框，实现日历的隐藏与显示
-    },false)
-
-    $wrapper.addEventListener(&apos;click&apos;, function (e) {
-        ...监控切换月份按钮，实现月份的切换和渲染
-    }
-    ,false)
-
-    $wrapper.addEventListener(&apos;click&apos;, function (e) {
-        ...监控日期，并获取值传入输入框
-    },false)
-}
-</code></pre><hr>
-<h2 id="分析与改进"><a href="#分析与改进" class="headerlink" title="分析与改进"></a>分析与改进</h2><ul>
-<li>可以在界面结构上进行精简</li>
-<li>显示今日</li>
-<li>显示当月</li>
-</ul>
-<hr>
-<h2 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h2><img src="/2017/09/23/插件制作/5329960-7709434716c5fcef.png" alt="日历" title="日历">
-<p>源码地址<a href="https://github.com/hqiwen/datepicker" target="_blank" rel="external">https://github.com/hqiwen/datepicker</a></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2017/09/23/插件制作/">
-    <time datetime="2017-09-23T04:08:38.000Z" class="entry-date">
-        2017-09-23
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/编程/">编程</a>
-  </div>
-
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插件-HTML/">插件,HTML</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-  
 
 </div></div>
         <div id="secondary" class="widget-area" role="complementary">
