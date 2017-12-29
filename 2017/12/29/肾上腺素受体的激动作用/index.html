@@ -17,12 +17,12 @@
 
 
 
-  <meta name="description" content="日历插件制作"/>
+  <meta name="description" content="肾上腺素受体的激动作用"/>
 
 
 
 
-  <meta name="keywords" content="插件,HTML, 知秋" />
+  <meta name="keywords" content="肾上腺素 激动作用, 知秋" />
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://hqiwen.github.io/2017/09/23/插件制作/"/>
+<link rel="canonical" href="https://hqiwen.github.io/2017/12/29/肾上腺素受体的激动作用/"/>
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
@@ -87,7 +87,7 @@
 
 
 
-    <title> 日历插件制作 - 知秋 </title>
+    <title> 肾上腺素受体的激动作用 - 知秋 </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -221,25 +221,25 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          日历插件制作
+          肾上腺素受体的激动作用
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2017-09-23
+          2017-12-29
         </span>
         
           <div class="post-category">
             
-              <a href="/categories/编程/">编程</a>
+              <a href="/categories/医药/">医药</a>
             
           </div>
         
         
         <div class="post-visits"
-             data-url="/2017/09/23/插件制作/"
-             data-title="日历插件制作">
+             data-url="/2017/12/29/肾上腺素受体的激动作用/"
+             data-title="肾上腺素受体的激动作用">
             阅读次数
           </div>
         
@@ -251,98 +251,31 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#静态页面的编写"><span class="toc-text">静态页面的编写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS样式的渲染"><span class="toc-text">CSS样式的渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据的获取"><span class="toc-text">数据的获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据的调用与渲染"><span class="toc-text">数据的调用与渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析与改进"><span class="toc-text">分析与改进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果展示"><span class="toc-text">结果展示</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#α受体激动药-去甲肾上腺素"><span class="toc-text">α受体激动药:去甲肾上腺素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#β受体激动药：异丙肾上腺素"><span class="toc-text">β受体激动药：异丙肾上腺素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#α、β受体激动药：肾上腺素"><span class="toc-text">α、β受体激动药：肾上腺素</span></a></li></ol>
     </div>
   </div>
 
 
     <div class="post-content">
       
-        <h2 id="静态页面的编写"><a href="#静态页面的编写" class="headerlink" title="静态页面的编写"></a>静态页面的编写</h2><p>首先要编写一个合理的静态页面，结构要清晰，变量定义实行语义化，实现组件化的思想</p>
-<p>插件分为两个部分，一个表头，一个表体</p>
-<pre><code>&lt;div class=&quot;ul-datepicker-header&quot;&gt;
-...表头内容 
-&lt;/div&gt;
-
-&lt;div class=&quot;ul-datepicker-body&quot;&gt;
-...表体内容
-&lt;/div&gt;
-</code></pre><hr>
-<a id="more"></a>
-<h2 id="CSS样式的渲染"><a href="#CSS样式的渲染" class="headerlink" title="CSS样式的渲染"></a>CSS样式的渲染</h2><p>合理的采用特定样式，掌握常见的元素的样式的编写，对于特殊的要给予记忆.</p>
-<p>box-shadow,border,padding 要灵活的运用<br>掌握快速布局的方法，一定要能快速的编写样式</p>
-<hr>
-<h2 id="数据的获取"><a href="#数据的获取" class="headerlink" title="数据的获取"></a>数据的获取</h2><p>怎样去获取一个合理的数据，怎样去处理一个数据，合理的去封装一个数据结构</p>
-<p><strong>在处理年月的时候，如何获取正确格式</strong></p>
-<p>注意到月份的范围是0-11，星期是0-6，当数据越界的时候要实行重置</p>
-<pre><code>myDate.getMonth();       //获取当前月份(0-11,0代表1月)
-myDate.getDate();        //获取当前日(1-31)
-myDate.getDay();         //获取当前星期X(0-6,0代表星期天)
-
-var firstDay = new Date(year, month - 1, 1);
-var firstDayWeekDay = firstDay.getDay();
-if (firstDayWeekDay === 0) firstDayWeekDay = 7;
-//获取一个月的第一天
-
-var lastDayOfLastMonth = new Date(year, month - 1, 0);
-var lastDateOfLastMonth = lastDayOfLastMonth.getDate();
-//前一月的最后一天
-</code></pre><p>返回数据</p>
-<pre><code>return {
-        year:year,
-        month:month,
-        days:ret,
-        /*ret为一个月的数据*/
-    }
-</code></pre><p>暴露变量</p>
-<pre><code>window.datepicker = datepicker//暴露一个全局变量，数据是全局变量的一个属性
-</code></pre><hr>
-<h2 id="数据的调用与渲染"><a href="#数据的调用与渲染" class="headerlink" title="数据的调用与渲染"></a>数据的调用与渲染</h2><p>需要把相应的数据插入到合理的结构中，注意数据的实时性</p>
-<p>结构函数</p>
-<pre><code>datepicker.buildUI = function (year, month){
-    ...编写结构
-}
-</code></pre><p>渲染函数</p>
-<pre><code>datepicker.render = function (direction) {
-    ...把得到的结构渲染出来
-   var html = datepicker.buildUI(year, month);
-   $wrapper = document.querySelector(&apos;.ul-datepicker-wrapper&apos;)
-   if (!$wrapper) {
-       $wrapper = document.createElement(&apos;div&apos;);
-       $wrapper.className = &apos;ul-datepicker-wrapper&apos;;
-   }
-   $wrapper.innerHTML = html;
-
-   document.body.appendChild($wrapper);
-}
-</code></pre><p>功能函数</p>
-<pre><code>datepicker.init = function (input) {
-       ...实现一定的功能
-        datepicker.render();
-        //调渲染
-
-    $input.addEventListener(&apos;click&apos;, function () {
-            ...监控输入框，实现日历的隐藏与显示
-    },false)
-
-    $wrapper.addEventListener(&apos;click&apos;, function (e) {
-        ...监控切换月份按钮，实现月份的切换和渲染
-    }
-    ,false)
-
-    $wrapper.addEventListener(&apos;click&apos;, function (e) {
-        ...监控日期，并获取值传入输入框
-    },false)
-}
-</code></pre><hr>
-<h2 id="分析与改进"><a href="#分析与改进" class="headerlink" title="分析与改进"></a>分析与改进</h2><ul>
-<li>可以在界面结构上进行精简</li>
-<li>显示今日</li>
-<li>显示当月</li>
-</ul>
-<hr>
-<h2 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h2><img src="/2017/09/23/插件制作/5329960-7709434716c5fcef.png" alt="日历" title="日历">
-<p>源码地址<a href="https://github.com/hqiwen/datepicker" target="_blank" rel="external">https://github.com/hqiwen/datepicker</a></p>
+        <p>肾上腺素受体分为 α 受体和 β 受体，对肾上腺素受体亚型的选择性，可以分为3类药：α 受体激动药，β 受体激动药和 α、β 受体激动药。</p>
+<h2 id="α受体激动药-去甲肾上腺素"><a href="#α受体激动药-去甲肾上腺素" class="headerlink" title="α受体激动药:去甲肾上腺素"></a>α受体激动药:去甲肾上腺素</h2><ol>
+<li>血管：激动血管α1受体，使<strong>血管收缩</strong>，主要使小动脉和小静脉收缩，皮肤粘膜血管收缩最明显，其次是肾血管。</li>
+<li>心脏：较弱激动心脏β1受体，对心脏产生<strong>正向效应</strong>。</li>
+</ol>
+<h2 id="β受体激动药：异丙肾上腺素"><a href="#β受体激动药：异丙肾上腺素" class="headerlink" title="β受体激动药：异丙肾上腺素"></a>β受体激动药：异丙肾上腺素</h2><ol>
+<li>心脏：对心脏β受体有强大的激动作用，产生<strong>正向效应</strong>。</li>
+<li>血管：对血管产生<strong>舒张作用</strong>，主要是激动β受体使骨骼肌血管扩张。</li>
+<li>支气管平滑肌：激动β受体，<strong>舒张</strong>支气管平滑肌。</li>
+<li>代谢：增加糖原分解，<strong>增加</strong>组织耗氧量。</li>
+</ol>
+<h2 id="α、β受体激动药：肾上腺素"><a href="#α、β受体激动药：肾上腺素" class="headerlink" title="α、β受体激动药：肾上腺素"></a>α、β受体激动药：肾上腺素</h2><ol>
+<li>心脏：作用于心脏β受体，加强心肌收缩性，加速传导，加快心率，提高心肌的兴奋性,<strong>正向作用</strong>。</li>
+<li>激动血管平滑肌上α受体，血管收缩，激动β受体，血管舒张。<strong>皮肤黏膜</strong>、<strong>肾</strong>和<strong>胃肠道</strong>α受体占优势，表现为<strong>收缩</strong>；<strong>骨骼肌</strong>和<strong>肝脏</strong>上的β受体占优势，小剂量使其<strong>舒张</strong>。</li>
+<li>平滑肌：激动β受体，舒张支气管，胃肠道平滑肌张力下降，引起排尿困难和尿潴留。</li>
+<li>代谢：肾上腺素提高机体代谢，使耗氧量增加20%到30%。</li>
+</ol>
+<p>综上：三者都对心脏有<strong>正向效应</strong>，但去甲肾上腺素对心脏的兴奋作用较弱，故多用异丙肾上腺素和肾上腺素来抢救<strong>休克</strong>和<strong>心搏骤停</strong>；异丙肾上腺素和肾上腺素可<strong>舒张支气管</strong>，可用于<strong>支气管哮喘</strong>。</p>
 
       
     </div>
@@ -358,7 +291,7 @@ var lastDateOfLastMonth = lastDayOfLastMonth.getDate();
     </p>
     <p class="copyright-item">
       <span>Link: </span>
-      <a href="https://hqiwen.github.io/2017/09/23/插件制作/">https://hqiwen.github.io/2017/09/23/插件制作/</a>
+      <a href="https://hqiwen.github.io/2017/12/29/肾上腺素受体的激动作用/">https://hqiwen.github.io/2017/12/29/肾上腺素受体的激动作用/</a>
     </p>
     <p class="copyright-item">
       <span>License: </span>
@@ -378,7 +311,7 @@ var lastDateOfLastMonth = lastDayOfLastMonth.getDate();
         
           <div class="post-tags">
             
-              <a href="/tags/插件-HTML/">插件,HTML</a>
+              <a href="/tags/肾上腺素-激动作用/">肾上腺素 激动作用</a>
             
           </div>
         
@@ -386,12 +319,18 @@ var lastDateOfLastMonth = lastDayOfLastMonth.getDate();
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2017/09/23/滨江/">
+      <a class="prev" href="/2017/12/29/肾上腺素受体的阻断作用/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">滨江</span>
+        <span class="prev-text nav-default">肾上腺素受体的阻断作用</span>
         <span class="prev-text nav-mobile">Prev</span>
       </a>
     
+    
+      <a class="next" href="/2017/12/25/乙酰胆碱的阻断作用/">
+        <span class="next-text nav-default">乙酰胆碱的阻断作用</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
@@ -503,9 +442,9 @@ var lastDateOfLastMonth = lastDayOfLastMonth.getDate();
   
   <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'https://hqiwen.github.io/2017/09/23/插件制作/';
-        this.page.identifier = '2017/09/23/插件制作/';
-        this.page.title = '日历插件制作';
+        this.page.url = 'https://hqiwen.github.io/2017/12/29/肾上腺素受体的激动作用/';
+        this.page.identifier = '2017/12/29/肾上腺素受体的激动作用/';
+        this.page.title = '肾上腺素受体的激动作用';
     };
     (function() {
     var d = document, s = d.createElement('script');
