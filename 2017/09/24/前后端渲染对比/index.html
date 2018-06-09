@@ -252,11 +252,11 @@
     <div class="post-content">
       
         <blockquote>
-<p>本文转载自<a href="https://medium.freecodecamp.com/heres-why-client-side-rendering-won-46a349fadb52" target="_blank" rel="external">Here’s why Client-side Rendering Won</a>,如果想获得更好的阅读体验，请阅读原文</p>
+<p>本文转载自<a href="https://medium.freecodecamp.com/heres-why-client-side-rendering-won-46a349fadb52" target="_blank" rel="noopener">Here’s why Client-side Rendering Won</a>,如果想获得更好的阅读体验，请阅读原文</p>
 </blockquote>
 <p>1 引言</p>
 <p>我为什么要选这篇文章呢？</p>
-<img src="/2017/09/24/前后端渲染对比/ca1b6618-2209-11e7-99ae-c2a75ad3dabb.png" alt="ca1b6618-2209-11e7-99ae-c2a75ad3dabb.png" title="">
+<img src="/2017/09/24/前后端渲染对比/ca1b6618-2209-11e7-99ae-c2a75ad3dabb.png">
 <p>十年前，几乎所有网站都使用 ASP、Java、PHP 这类做后端渲染，但后来随着 jQuery、Angular、React、Vue 等 JS 框架的崛起，开始转向了前端渲染。从 2014 年起又开始流行了同构渲染，号称是未来，集成了前后端渲染的优点，但转眼间三年过去了，很多当时壮心满满的框架（rendr、Lazo）从先驱变成了先烈。同构到底是不是未来？自己的项目该如何选型？我想不应该只停留在追求热门和拘泥于固定模式上，忽略了前后端渲染之“争”的“核心点”，关注如何提升“用户体验”。</p>
 <p>原文分析了前端渲染的优势，并没有进行深入探讨。我想以它为切入口来深入探讨一下。</p>
 <p>明确三个概念：「后端渲染」指传统的 ASP、Java 或 PHP 的渲染机制；「前端渲染」指使用 JS 来渲染页面大部分内容，代表是现在流行的 SPA 单页面应用；「同构渲染」指前后端共用 JS，首次渲染时使用 Node.js 来直出 HTML。一般来说同构渲染是介于前后端中的共有部分。<br><a id="more"></a><br>2 内容概要</p>
@@ -269,7 +269,7 @@
 <li>天生的关注分离设计。服务器来访问数据库提供接口，JS 只关注数据获取和展现</li>
 <li>JS 一次学习，到处使用。可以用来开发 Web、Serve、Mobile、Desktop 类型的应用</li>
 </ul>
-<img src="/2017/09/24/前后端渲染对比/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d37623034616335636165363466613737343061316466623162663862303963345f622e706e67.png" alt="68747470733a2f2f706963312e7a68696d672e636f6d2f76322d37623034616335636165363466613737343061316466623162663862303963345f622e706e67.png" title="">
+<img src="/2017/09/24/前后端渲染对比/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d37623034616335636165363466613737343061316466623162663862303963345f622e706e67.png">
 <p>后端渲染的优势</p>
 <ul>
 <li>服务端渲染不需要先下载一堆 js 和 css 后才能看到页面（首屏性能）</li>
@@ -309,7 +309,7 @@
 <li><p>前端渲染和服务端渲染内容不一致的问题</p>
 <p>由于前端代码使用的  window  在 node 环境是不存在的，所以要 mock window，其中最重要的是 cookie，userAgent，location。但是由于每个用户访问时是不一样的  window ，那么就意味着你得每次都更新  window 。</p>
 <p>而服务端由于 js require 的 cache 机制，造成前端代码除了具体渲染部分都只会加载一遍。这时候  window  就得不到更新了。所以要引入一个合适的更新机制，比如把读取改成每次用的时候再读取。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export const isSsr = () =&gt; (</div><div class="line">  !(typeof window !== &apos;undefined&apos; &amp;&amp; window.document &amp;&amp; window.document.createElement &amp;&amp; window.setTimeout)</div><div class="line">  );</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export const isSsr = () =&gt; (</span><br><span class="line">  !(typeof window !== &apos;undefined&apos; &amp;&amp; window.document &amp;&amp; window.document.createElement &amp;&amp; window.setTimeout)</span><br><span class="line">  );</span><br></pre></td></tr></table></figure>
 <p>原因是很多 DOM 计算在 SSR 的时候是无法进行的，涉及到 DOM 计算的的内容不可能做到 SSR 和 CSR 完全一致，这种不一致可能会带来页面的闪动。</p>
 </li>
 <li><p>内存溢出</p>
@@ -330,8 +330,8 @@
 </li>
 <li><p>交互优化</p>
 <p>首次渲染的问题可以用更好的交互来解决，先看下 linkedin 的渲染</p>
-<img src="/2017/09/24/前后端渲染对比/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f5442314a6a6b5151705858585858536158585858585858585858582d323535342d313430302e706e67.png" alt="68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f5442314a6a6b5151705858585858536158585858585858585858582d323535342d313430302e706e67.png" title="">
-<img src="/2017/09/24/前后端渲染对比/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f54423169614d4d51705858585858766158585858585858585858582d323535342d313335342e706e67.png" alt="68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f54423169614d4d51705858585858766158585858585858585858582d323535342d313335342e706e67.png" title="">
+<img src="/2017/09/24/前后端渲染对比/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f5442314a6a6b5151705858585858536158585858585858585858582d323535342d313430302e706e67.png">
+<img src="/2017/09/24/前后端渲染对比/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f54423169614d4d51705858585858766158585858585858585858582d323535342d313335342e706e67.png">
 <p>有什么感受，非常自然，打开渲染并没有白屏，有两段加载动画，第一段像是加载资源，第二段是一个加载占位器，过去我们会用 loading 效果，但过渡性不好。近年流行 Skeleton Screen 效果。其实就是在白屏无法避免的时候，为了解决等待加载过程中白屏或者界面闪烁造成的割裂感带来的解决方案。</p>
 </li>
 <li><p>部分同构</p>
@@ -342,14 +342,14 @@
 <p>3 总结</p>
 <p>我们赞成客户端渲染是未来的主要方向，服务端则会专注于在数据和业务处理上的优势。但由于日趋复杂的软硬件环境和用户体验更高的追求，也不能只拘泥于完全的客户端渲染。同构渲染看似美好，但以目前的发展程度来看，在大型项目中还不具有足够的应用价值，但不妨碍部分使用来优化首屏性能。做同构之前 ，一定要考虑到浏览器和服务器的环境差异，站在更高层面考虑。</p>
 <p>附：Next.js 体验</p>
-<p><a href="https://github.com/zeit/next.js/" target="_blank" rel="external">Next.js</a> 是时下非常流行的基于 React 的同构开发框架。作者之一就是大名鼎鼎的 Socket.io 的作者 Guillermo Rauch。它有以下几个亮点特别吸引我：</p>
+<p><a href="https://github.com/zeit/next.js/" target="_blank" rel="noopener">Next.js</a> 是时下非常流行的基于 React 的同构开发框架。作者之一就是大名鼎鼎的 Socket.io 的作者 Guillermo Rauch。它有以下几个亮点特别吸引我：</p>
 <ul>
 <li>巧妙地用标准化的解决了请求的问题。同构和页面开发类似，异步是个大难题，异步中难点又在接口请求。Next.js 给组件新增了 getInitialProps 方法来专门处理初始化请求，再也不用手动往页面上塞 DATA 和调用 ReactDOMServer.renderToString</li>
 <li>使用 styled-jsx 解决了 css-in-js 的问题。这种方案虽然不像 styled-component 那样强大，但足够简单，可以说是最小的成本解决了问题</li>
 <li>Fast by default。页面默认拆分文件方式打包，支持Prefetch页面预加载</li>
 <li>全家桶式的的解决方案。简洁清晰的目录结构，这一点 Redux 等框架真应该学一学。不过全家桶的方案比较适合全新项目使用，旧项目使用要评估好成本</li>
 </ul>
-<p>讨论地址是：<a href="https://github.com/camsong/blog/issues/8" target="_blank" rel="external">前后端渲染之争 · Issue #5 · dt-fe/weekly</a></p>
+<p>讨论地址是：<a href="https://github.com/camsong/blog/issues/8" target="_blank" rel="noopener">前后端渲染之争 · Issue #5 · dt-fe/weekly</a></p>
 
       
     </div>

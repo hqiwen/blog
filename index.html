@@ -219,6 +219,64 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2018/06/09/从数据看vue组件/">从数据看vue组件</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-06-09
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/编程/">编程</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2018/06/09/从数据看vue组件/"
+             data-title="从数据看vue组件">
+            posts.visits
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>三大前端框架 Vue 、react 和 angular，都提到了一个概念——组件，那么什么是组件——组件（Component）是对数据和方法的简单封装。考虑一个页面，有 UI 的渲染，有状态的改变，有事件的监听。组件正是由这三个方面组成的。现在来看一个简单的组件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//绑定class，进行UI渲染</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span> <span class="attr">v-bind:class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    //传递message值</span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    //监听click事件</span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"reverseMessage"</span>&gt;</span>逆转消息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">margin</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <div class="read-more">
+            <a href="/2018/06/09/从数据看vue组件/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2018/03/30/日历插件的重构-引入request-js/">日历插件的重构--引入request.js</a>
         
       </h1>
@@ -321,7 +379,7 @@
 
         
           <p>麻醉药分为全身麻醉药和局部麻醉药。全麻药是具有麻醉功能，能可逆性抑制中枢神经系统功能，引起暂时性感觉、意识和反射消失的药物。局麻药作用神经系统末梢，能暂时、可逆地阻断神经冲动的产生和传导。</p>
-<img src="/2018/03/09/麻醉药/麻醉.jpg" alt="麻醉.jpg" title="">
+<img src="/2018/03/09/麻醉药/麻醉.jpg">
 <h2 id="麻醉四期"><a href="#麻醉四期" class="headerlink" title="麻醉四期"></a>麻醉四期</h2><table>
 <thead>
 <tr>
@@ -404,7 +462,7 @@
 
         
           <p>肾脏是排出$Na^+$、$Cl^-$等电解质和水的重要器官，加速电解质和水的排出，就称为利尿。利尿药主要用于各种原因引起的水肿，如心力衰竭、肾衰竭以及肝硬化，也可用于高血压、肾结石、高血钙等的治疗。</p>
-<img src="/2018/03/09/肾的功能性利尿/U.jpg" alt="U.jpg" title="">
+<img src="/2018/03/09/肾的功能性利尿/U.jpg">
 <p>常用利尿药可以分为5类：</p>
 <h2 id="碳酸酐酶抑制药：乙酰脞胺"><a href="#碳酸酐酶抑制药：乙酰脞胺" class="headerlink" title="碳酸酐酶抑制药：乙酰脞胺"></a>碳酸酐酶抑制药：乙酰脞胺</h2><p>通过抑制碳酸酐酶的活性而抑制$HCO_3^-$的重吸收，由于离子交换，造成尿中H、$K^+$、水($Na^+$)的排出增多。同时也可抑制房水和脑脊液的分泌，本品利尿作用弱，少用。</p>
 <p>临床用途：青光眼(降低眼内压，抑制房水分泌)、急性高山病<br>
@@ -775,74 +833,10 @@
 
         
           <p>人是由大脑和脊髓控制的，那么是怎么控制的呢？这就要提到传出神经系统了，传出神经系统是中枢神经（大脑和脊髓）影响外周各个器官的途径，很显然中枢神经不是隔空控制的，并不存在什么黑魔法。现在我们有了传出神经系统，通俗的说就是一个管道，中枢神经系统对你想要处理的器官发出一个指令，这种指令就是神经递质。你可能已经猜到，不同的指令那么就会有不同的神经递质，你的想法完全正确，请接着往下走。</p>
-<img src="/2017/12/25/传出神经系统概论/图片1.png" alt="图片1.png" title="">
+<img src="/2017/12/25/传出神经系统概论/图片1.png">
 <p>传出神经（管道）、神经递质（指令）还记得吗，下面一个名词——受体，什么是<strong>受体</strong>，接受神经递质并使细胞产生相应的生理效应的细胞结构。不同的人对相同的指令会有不同的反应，不同的器官对相同的神经递质的“脾气”也各不相同。我们可以把“脾气”修改一下，叫做亲和力，是不是瞬间不同了。好，要记得<strong>神经递质——受体</strong>这一组合，我们的结论都将来源于此。<br>
           <div class="read-more">
             <a href="/2017/12/25/传出神经系统概论/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/09/24/前后端渲染对比/">精读前后端渲染之争</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017-09-24
-        </span>
-        
-          <div class="post-category">
-            
-              <a href="/categories/编程/">编程</a>
-            
-          </div>
-        
-        
-        <div class="post-visits"
-             data-url="/2017/09/24/前后端渲染对比/"
-             data-title="精读前后端渲染之争">
-            posts.visits
-          </div>
-        
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <blockquote>
-<p>本文转载自<a href="https://medium.freecodecamp.com/heres-why-client-side-rendering-won-46a349fadb52" target="_blank" rel="external">Here’s why Client-side Rendering Won</a>,如果想获得更好的阅读体验，请阅读原文</p>
-</blockquote>
-<p>1 引言</p>
-<p>我为什么要选这篇文章呢？</p>
-<img src="/2017/09/24/前后端渲染对比/ca1b6618-2209-11e7-99ae-c2a75ad3dabb.png" alt="ca1b6618-2209-11e7-99ae-c2a75ad3dabb.png" title="">
-<p>十年前，几乎所有网站都使用 ASP、Java、PHP 这类做后端渲染，但后来随着 jQuery、Angular、React、Vue 等 JS 框架的崛起，开始转向了前端渲染。从 2014 年起又开始流行了同构渲染，号称是未来，集成了前后端渲染的优点，但转眼间三年过去了，很多当时壮心满满的框架（rendr、Lazo）从先驱变成了先烈。同构到底是不是未来？自己的项目该如何选型？我想不应该只停留在追求热门和拘泥于固定模式上，忽略了前后端渲染之“争”的“核心点”，关注如何提升“用户体验”。</p>
-<p>原文分析了前端渲染的优势，并没有进行深入探讨。我想以它为切入口来深入探讨一下。</p>
-<p>明确三个概念：「后端渲染」指传统的 ASP、Java 或 PHP 的渲染机制；「前端渲染」指使用 JS 来渲染页面大部分内容，代表是现在流行的 SPA 单页面应用；「同构渲染」指前后端共用 JS，首次渲染时使用 Node.js 来直出 HTML。一般来说同构渲染是介于前后端中的共有部分。<br>
-          <div class="read-more">
-            <a href="/2017/09/24/前后端渲染对比/" class="read-more-link">阅读更多</a>
           </div>
         
       
