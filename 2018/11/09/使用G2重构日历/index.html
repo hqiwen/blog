@@ -17,12 +17,12 @@
 
 
 
-  <meta name="description" content="肾上腺素受体的激动作用"/>
+  <meta name="description" content="使用G2重构日历"/>
 
 
 
 
-  <meta name="keywords" content="肾上腺素 激动作用, 知秋" />
+  <meta name="keywords" content="可视化, 知秋" />
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://hqiwen.github.io/2017/12/29/肾上腺素受体的激动作用/"/>
+<link rel="canonical" href="https://hqiwen.github.io/2018/11/09/使用G2重构日历/"/>
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
@@ -87,7 +87,7 @@
 
 
 
-    <title> 肾上腺素受体的激动作用 - 知秋 </title>
+    <title> 使用G2重构日历 - 知秋 </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -221,25 +221,25 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          肾上腺素受体的激动作用
+          使用G2重构日历
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2017-12-29
+          2018-11-09
         </span>
         
           <div class="post-category">
             
-              <a href="/categories/医药/">医药</a>
+              <a href="/categories/编程/">编程</a>
             
           </div>
         
         
         <div class="post-visits"
-             data-url="/2017/12/29/肾上腺素受体的激动作用/"
-             data-title="肾上腺素受体的激动作用">
+             data-url="/2018/11/09/使用G2重构日历/"
+             data-title="使用G2重构日历">
             阅读次数
           </div>
         
@@ -251,32 +251,38 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#α受体激动药-去甲肾上腺素"><span class="toc-text">α受体激动药:去甲肾上腺素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#β受体激动药：异丙肾上腺素"><span class="toc-text">β受体激动药：异丙肾上腺素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#α、β受体激动药：肾上腺素"><span class="toc-text">α、β受体激动药：肾上腺素</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#G2是什么"><span class="toc-text">G2是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图形语法"><span class="toc-text">图形语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重构的简单说明"><span class="toc-text">重构的简单说明</span></a></li></ol>
     </div>
   </div>
 
 
     <div class="post-content">
       
-        <p>肾上腺素受体分为 α 受体和 β 受体，对肾上腺素受体亚型的选择性，可以分为3类药：α 受体激动药，β 受体激动药和 α、β 受体激动药。</p>
-<h2 id="α受体激动药-去甲肾上腺素"><a href="#α受体激动药-去甲肾上腺素" class="headerlink" title="α受体激动药:去甲肾上腺素"></a>α受体激动药:去甲肾上腺素</h2><ol>
-<li>血管：激动血管α1受体，使<strong>血管收缩</strong>，主要使小动脉和小静脉收缩，皮肤粘膜血管收缩最明显，其次是肾血管。</li>
-<li>心脏：较弱激动心脏β1受体，对心脏产生<strong>正向效应</strong>。</li>
+        <h2 id="G2是什么"><a href="#G2是什么" class="headerlink" title="G2是什么"></a>G2是什么</h2><blockquote>
+<p><a href="https://antv.alipay.com/zh-cn/g2/3.x/tutorial/index.html" target="_blank" rel="external">G2</a>是一套基于可视化编码的图形语法，以数据驱动，具有高度的易用性和扩展性，用户无需关注各种繁琐的实现细节，一条语句即可构建出各种各样的可交互的统计图表。</p>
+</blockquote>
+<p>简单来说G2就是一个可视化JavaScript工具库，把传进去的数据用图表表现出来，但是不同于其他图形库，G2是基于图形语法工作的</p>
+<h2 id="图形语法"><a href="#图形语法" class="headerlink" title="图形语法"></a>图形语法</h2><p>图形语法描述了我们从数据到图表的映射</p>
+<img src="/2018/11/09/使用G2重构日历/dataToGraph.png" alt="从数据到图形的过程" title="从数据到图形的过程">
+<ol>
+<li>从数据创建变量 data -&gt; variables[set]</li>
+<li>对变量集进行运算,相对比与集合的运算,找到感兴趣的研究变量(cross, blend, nest)</li>
+<li>对要研究的变量进行归一化，定义变量的性质(cat, time)</li>
+<li>对复杂的变量进行统计,并不是所有的变量都要进行统计</li>
+<li>创建几何图形 variable -&gt; graph</li>
+<li>将建立的图形放到坐标系</li>
+<li>对数据进行美学优化(color, point, label)</li>
+<li>得到相应图形<a id="more"></a>
+下面给一个简单的示例：</li>
 </ol>
-<a id="more"></a>
-<h2 id="β受体激动药：异丙肾上腺素"><a href="#β受体激动药：异丙肾上腺素" class="headerlink" title="β受体激动药：异丙肾上腺素"></a>β受体激动药：异丙肾上腺素</h2><ol>
-<li>心脏：对心脏β受体有强大的激动作用，产生<strong>正向效应</strong>。</li>
-<li>血管：对血管产生<strong>舒张作用</strong>，主要是激动β受体使骨骼肌血管扩张。</li>
-<li>支气管平滑肌：激动β受体，<strong>舒张</strong>支气管平滑肌。</li>
-<li>代谢：增加糖原分解，<strong>增加</strong>组织耗氧量。</li>
-</ol>
-<h2 id="α、β受体激动药：肾上腺素"><a href="#α、β受体激动药：肾上腺素" class="headerlink" title="α、β受体激动药：肾上腺素"></a>α、β受体激动药：肾上腺素</h2><ol>
-<li>心脏：作用于心脏β受体，加强心肌收缩性，加速传导，加快心率，提高心肌的兴奋性,<strong>正向作用</strong>。</li>
-<li>激动血管平滑肌上α受体，血管收缩，激动β受体，血管舒张。<strong>皮肤黏膜</strong>、<strong>肾</strong>和<strong>胃肠道</strong>α受体占优势，表现为<strong>收缩</strong>；<strong>骨骼肌</strong>和<strong>肝脏</strong>上的β受体占优势，小剂量使其<strong>舒张</strong>。</li>
-<li>平滑肌：激动β受体，舒张支气管，胃肠道平滑肌张力下降，引起排尿困难和尿潴留。</li>
-<li>代谢：肾上腺素提高机体代谢，使耗氧量增加20%到30%。</li>
-</ol>
-<p>综上：三者都对心脏有<strong>正向效应</strong>，但去甲肾上腺素对心脏的兴奋作用较弱，故多用异丙肾上腺素和肾上腺素来抢救<strong>休克</strong>和<strong>心搏骤停</strong>；异丙肾上腺素和肾上腺素可<strong>舒张支气管</strong>，可用于<strong>支气管哮喘</strong>。</p>
+<img src="/2018/11/09/使用G2重构日历/pieChart.png" alt="饼图" title="饼图">
+<h2 id="重构的简单说明"><a href="#重构的简单说明" class="headerlink" title="重构的简单说明"></a>重构的简单说明</h2><p>数据还是来源于<strong>data.js</strong>，计算方法大致相同，只不过返回的数据有所不同，日历作为一个二维的图表，返回如下数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ret.push(&#123;</div><div class="line">    weekDay: weekDay,</div><div class="line">    weekIndex: weekIndex,</div><div class="line">    date: showDate,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>横坐标是weekDay，纵坐标是weekIndex，值是date，则有如下图形语法公式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">chart</div><div class="line">    .point()</div><div class="line">    .shape(<span class="string">"square"</span>)</div><div class="line">    .position(<span class="string">"weekDay*weekIndex"</span>)</div><div class="line">    .color(<span class="string">"date"</span>)</div></pre></td></tr></table></figure>
+<p>添加两个辅助元素对事件的监听，用ID进行区分，来切换上下月：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">chart.on(<span class="string">"guide-text:click"</span>, ev =&gt; &#123;</div><div class="line">    <span class="keyword">if</span> (ev.appendInfo.id == <span class="string">"prevMonth"</span>) &#123;</div><div class="line">        <span class="comment">// some code</span></div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ev.appendInfo.id == <span class="string">"nextMonth"</span>) &#123;</div><div class="line">        <span class="comment">// some code</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><a href="https://github.com/hqiwen/datepicker" target="_blank" rel="external">项目地址</a></p>
 
       
     </div>
@@ -292,7 +298,7 @@
     </p>
     <p class="copyright-item">
       <span>原文链接: </span>
-      <a href="https://hqiwen.github.io/2017/12/29/肾上腺素受体的激动作用/">https://hqiwen.github.io/2017/12/29/肾上腺素受体的激动作用/</a>
+      <a href="https://hqiwen.github.io/2018/11/09/使用G2重构日历/">https://hqiwen.github.io/2018/11/09/使用G2重构日历/</a>
     </p>
     <p class="copyright-item">
       <span>许可协议: </span>
@@ -312,7 +318,7 @@
         
           <div class="post-tags">
             
-              <a href="/tags/肾上腺素-激动作用/">肾上腺素 激动作用</a>
+              <a href="/tags/可视化/">可视化</a>
             
           </div>
         
@@ -320,15 +326,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2017/12/29/肾上腺素受体的阻断作用/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">肾上腺素受体的阻断作用</span>
-        <span class="prev-text nav-mobile">上一篇</span>
-      </a>
     
-    
-      <a class="next" href="/2017/12/25/乙酰胆碱的阻断作用/">
-        <span class="next-text nav-default">乙酰胆碱的阻断作用</span>
+      <a class="next" href="/2018/10/23/一个简易的打包器/">
+        <span class="next-text nav-default">一个简易的打包器</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
@@ -443,9 +443,9 @@
   
   <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'https://hqiwen.github.io/2017/12/29/肾上腺素受体的激动作用/';
-        this.page.identifier = '2017/12/29/肾上腺素受体的激动作用/';
-        this.page.title = '肾上腺素受体的激动作用';
+        this.page.url = 'https://hqiwen.github.io/2018/11/09/使用G2重构日历/';
+        this.page.identifier = '2018/11/09/使用G2重构日历/';
+        this.page.title = '使用G2重构日历';
     };
     (function() {
     var d = document, s = d.createElement('script');

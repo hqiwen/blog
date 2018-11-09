@@ -104,7 +104,7 @@
         <li class="mobile-menu-item">
           
           
-            Home
+            首页
           
         </li>
       </a>
@@ -113,7 +113,7 @@
         <li class="mobile-menu-item">
           
           
-            Archives
+            归档
           
         </li>
       </a>
@@ -161,7 +161,7 @@
           <a class="menu-item-link" href="/">
             
             
-              Home
+              首页
             
           </a>
         </li>
@@ -170,7 +170,7 @@
           <a class="menu-item-link" href="/archives/">
             
             
-              Archives
+              归档
             
           </a>
         </li>
@@ -219,6 +219,76 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2018/11/09/使用G2重构日历/">使用G2重构日历</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-11-09
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/编程/">编程</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2018/11/09/使用G2重构日历/"
+             data-title="使用G2重构日历">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="G2是什么"><a href="#G2是什么" class="headerlink" title="G2是什么"></a>G2是什么</h2><blockquote>
+<p><a href="https://antv.alipay.com/zh-cn/g2/3.x/tutorial/index.html" target="_blank" rel="external">G2</a>是一套基于可视化编码的图形语法，以数据驱动，具有高度的易用性和扩展性，用户无需关注各种繁琐的实现细节，一条语句即可构建出各种各样的可交互的统计图表。</p>
+</blockquote>
+<p>简单来说G2就是一个可视化JavaScript工具库，把传进去的数据用图表表现出来，但是不同于其他图形库，G2是基于图形语法工作的</p>
+<h2 id="图形语法"><a href="#图形语法" class="headerlink" title="图形语法"></a>图形语法</h2><p>图形语法描述了我们从数据到图表的映射</p>
+<img src="/2018/11/09/使用G2重构日历/dataToGraph.png" alt="从数据到图形的过程" title="从数据到图形的过程">
+<ol>
+<li>从数据创建变量 data -&gt; variables[set]</li>
+<li>对变量集进行运算,相对比与集合的运算,找到感兴趣的研究变量(cross, blend, nest)</li>
+<li>对要研究的变量进行归一化，定义变量的性质(cat, time)</li>
+<li>对复杂的变量进行统计,并不是所有的变量都要进行统计</li>
+<li>创建几何图形 variable -&gt; graph</li>
+<li>将建立的图形放到坐标系</li>
+<li>对数据进行美学优化(color, point, label)</li>
+<li>得到相应图形
+          <div class="read-more">
+            <a href="/2018/11/09/使用G2重构日历/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2018/10/23/一个简易的打包器/">一个简易的打包器</a>
         
       </h1>
@@ -261,7 +331,7 @@
 <p> 从目录信息构造需要的模块信息,传入一个文件path路径，返回一个而文件模块对象ModuleObject</p>
 <h3 id="getModules"><a href="#getModules" class="headerlink" title="getModules()"></a>getModules()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getModules</span>(<span class="params">entry</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> rootModule = createModuleObject(entry);</div><div class="line">  <span class="keyword">const</span> modules = [rootModule];</div><div class="line">  <span class="comment">//遍历依赖，把所有引用文件变成模块对象</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> <span class="built_in">module</span> <span class="keyword">of</span> modules) &#123;</div><div class="line">    <span class="built_in">module</span>.map = &#123;&#125;;</div><div class="line">    <span class="built_in">module</span>.requires.forEach(<span class="function"><span class="params">dependency</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">const</span> basedir = path.dirname(<span class="built_in">module</span>.filePath);</div><div class="line">      <span class="keyword">const</span> dependencyPath = resolve(dependency, &#123; basedir &#125;);</div><div class="line">      <span class="keyword">const</span> dependencyObject = createModuleObject(dependencyPath);</div><div class="line"></div><div class="line">      <span class="built_in">module</span>.map[dependency] = dependencyObject.id;</div><div class="line">      modules.push(dependencyObject);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> modules;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <div class="read-more">
-            <a href="/2018/10/23/一个简易的打包器/" class="read-more-link">Read more..</a>
+            <a href="/2018/10/23/一个简易的打包器/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -319,7 +389,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//绑定class，进行UI渲染</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span> <span class="attr">v-bind:class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">    //传递message值</div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">    //监听click事件</div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"reverseMessage"</span>&gt;</span>逆转消息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span>&#123;</div><div class="line">    <span class="attribute">margin</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">padding</span>:<span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <div class="read-more">
-            <a href="/2018/06/09/从数据看vue组件/" class="read-more-link">Read more..</a>
+            <a href="/2018/06/09/从数据看vue组件/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -384,7 +454,7 @@
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>([<span class="string">"math"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">math</span>) </span>&#123;</div><div class="line">    alert(math.add(<span class="number">1</span>, <span class="number">1</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
           <div class="read-more">
-            <a href="/2018/03/30/日历插件的重构-引入request-js/" class="read-more-link">Read more..</a>
+            <a href="/2018/03/30/日历插件的重构-引入request-js/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -467,7 +537,7 @@
 </tbody>
 </table>
           <div class="read-more">
-            <a href="/2018/03/09/麻醉药/" class="read-more-link">Read more..</a>
+            <a href="/2018/03/09/麻醉药/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -527,7 +597,7 @@
 <h2 id="碳酸酐酶抑制药：乙酰脞胺"><a href="#碳酸酐酶抑制药：乙酰脞胺" class="headerlink" title="碳酸酐酶抑制药：乙酰脞胺"></a>碳酸酐酶抑制药：乙酰脞胺</h2><p>通过抑制碳酸酐酶的活性而抑制$HCO_3^-$的重吸收，由于离子交换，造成尿中H、$K^+$、水($Na^+$)的排出增多。同时也可抑制房水和脑脊液的分泌，本品利尿作用弱，少用。</p>
 <p>临床用途：青光眼(降低眼内压，抑制房水分泌)、急性高山病<br>
           <div class="read-more">
-            <a href="/2018/03/09/肾的功能性利尿/" class="read-more-link">Read more..</a>
+            <a href="/2018/03/09/肾的功能性利尿/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -584,7 +654,7 @@
           <p>肾脏是人体的过滤和排泄废物的器官，有保留$Na^{+}$排出$K^{+}$分泌$H^{+}$的作用，同时可以控制尿量来维持血容量，与心血管系统的功能密切相关。</p>
 <p>肾脏可以分泌肾素，肾素使血管紧张素原转化成血管紧张素1（Ang1），血管紧张素1（Ang1）可以在血管紧张素转化酶（ACE）的作用下转化成血管紧张素2（Ang2）。Ang2有两个受体$AT<em>{1}$<br>和<br>$AT</em>{2}$,$AT<em>{1}$受体激动产生<strong>收缩血管</strong>，促进醛固酮的释放，增加血容量，<strong>升高血压</strong>等作用，还有生长激素样作用，可以<strong>促进心肌肥大</strong>，$AT</em>{2}$受体激活缓激肽受体和NO合酶，产生NO，<strong>舒张血管</strong>，<strong>降低血压</strong>，促进细胞凋亡。<br>
           <div class="read-more">
-            <a href="/2018/03/09/肾的内分泌药理/" class="read-more-link">Read more..</a>
+            <a href="/2018/03/09/肾的内分泌药理/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -646,7 +716,7 @@
 </ul>
 <p>临床应用：治疗外周血管痉挛性疾病，<strong>顽固性充血性心力衰竭</strong>和<strong>急性心肌梗死</strong>，<strong>抗休克</strong>，药物引起的高血压。<br>
           <div class="read-more">
-            <a href="/2017/12/29/肾上腺素受体的阻断作用/" class="read-more-link">Read more..</a>
+            <a href="/2017/12/29/肾上腺素受体的阻断作用/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -706,7 +776,7 @@
 <li>心脏：较弱激动心脏β1受体，对心脏产生<strong>正向效应</strong>。</li>
 </ol>
           <div class="read-more">
-            <a href="/2017/12/29/肾上腺素受体的激动作用/" class="read-more-link">Read more..</a>
+            <a href="/2017/12/29/肾上腺素受体的激动作用/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -771,74 +841,7 @@
 </li>
 <li><p>平滑肌<br>阿托品对多种内脏平滑肌有<strong>松弛作用</strong>，对过度活动或痉挛的平滑肌作用明显。可以抑制胃肠平滑肌的痉挛，缓解肠胃绞痛，降低尿道和膀胱的张力，接触输尿管张力增高。</p>
           <div class="read-more">
-            <a href="/2017/12/25/乙酰胆碱的阻断作用/" class="read-more-link">Read more..</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/12/25/乙酰胆碱的促进作用/">乙酰胆碱的促进作用</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017-12-25
-        </span>
-        
-          <div class="post-category">
-            
-              <a href="/categories/医药/">医药</a>
-            
-          </div>
-        
-        
-        <div class="post-visits"
-             data-url="/2017/12/25/乙酰胆碱的促进作用/"
-             data-title="乙酰胆碱的促进作用">
-            阅读次数
-          </div>
-        
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>乙酰胆碱（下面将以ACH代指）是中枢和外周神经系统的内源性神经递质，作用于 M 胆碱受体和 N 胆碱受体。在这一节里，我们重点介绍ACH的作用，ACH性质不稳定，极易被体内的ACH酶所分解，普通作用于各个器官，对各个器官的选择性较差。</p>
-<p>下面逐个介绍ACH的作用：</p>
-<ul>
-<li>M样作用</li>
-</ul>
-<ol>
-<li><p>心血管系统</p>
-<p> 1.1 <strong>舒张血管</strong> ：ACH 作用血管内皮细胞 M3 受体，引起NO的释放，从而是临近平滑肌松弛，小剂量静脉注射可舒张全身血管。</p>
-<p> 1.2 心脏 ： ACH 减弱心肌收缩力，减慢心率，对心脏产生<strong>负性作用</strong>。</p>
-</li>
-<li><p>胃肠道</p>
-<p> ACh 兴奋胃肠道平滑肌，<strong>促进胃肠分泌</strong>，引起恶心、呕吐、腹痛、嗳气</p>
-          <div class="read-more">
-            <a href="/2017/12/25/乙酰胆碱的促进作用/" class="read-more-link">Read more..</a>
+            <a href="/2017/12/25/乙酰胆碱的阻断作用/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -858,7 +861,7 @@
     
     
       <a class="next" href="/page/2/">
-        <span class="next-text">Next</span>
+        <span class="next-text">下一页</span>
         <i class="iconfont icon-right"></i>
       </a>
     
@@ -922,11 +925,11 @@
 
 <div class="copyright">
   <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    Theme - 
+    主题 - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
 
