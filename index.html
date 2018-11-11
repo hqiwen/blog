@@ -219,6 +219,73 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2018/11/09/计算机系统构造/">计算机系统构造浅解第一期</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-11-09
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/编程/">编程</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2018/11/09/计算机系统构造/"
+             data-title="计算机系统构造浅解第一期">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="程序设计的基本元素"><a href="#程序设计的基本元素" class="headerlink" title="程序设计的基本元素"></a>程序设计的基本元素</h2><ol>
+<li><strong>基本表达式</strong>，用于表示语言关心的最简单个体。</li>
+<li><strong>组合的方法</strong>，通过它们可以从简单的东西出发构造出符合的元素。</li>
+<li><strong>抽象的方法</strong>，通过它们可以为复合对象命名，并将它们当做单元去操作。</li>
+</ol>
+<p>在程序设计中，我们需要处理两类要素：过程和数据。数据是一种我们希望去操作的“东西”，而过程就是有关操作这些数据的规则的描述。</p>
+<h2 id="抽象过程"><a href="#抽象过程" class="headerlink" title="抽象过程"></a>抽象过程</h2><h3 id="数据参数化"><a href="#数据参数化" class="headerlink" title="数据参数化"></a>数据参数化</h3><p>如果我们要计算2的平方，你可能会这样写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = <span class="number">2</span>*<span class="number">2</span></div></pre></td></tr></table></figure>
+<p>现在我们要表达一个”平方”的概念，则有如下公式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x * x;</div><div class="line">&#125;</div><div class="line">result = square(<span class="number">2</span>);</div></pre></td></tr></table></figure>
+<p>我们提出了一个复合过程<strong>平方</strong>，从只能计算2的平方到任意数的平方，差别在于给了过程一个参数，把<strong>数据参数化</strong>，可以提高抽象性和适用性，下面用平方去定义<strong>平方和</strong>的概念；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">squareSum</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> square(x) + square(y);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <div class="read-more">
+            <a href="/2018/11/09/计算机系统构造/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2018/11/09/使用G2重构日历/">使用G2重构日历</a>
         
       </h1>
@@ -777,71 +844,6 @@
 </ol>
           <div class="read-more">
             <a href="/2017/12/29/肾上腺素受体的激动作用/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/12/25/乙酰胆碱的阻断作用/">乙酰胆碱的阻断作用</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017-12-25
-        </span>
-        
-          <div class="post-category">
-            
-              <a href="/categories/医药/">医药</a>
-            
-          </div>
-        
-        
-        <div class="post-visits"
-             data-url="/2017/12/25/乙酰胆碱的阻断作用/"
-             data-title="乙酰胆碱的阻断作用">
-            阅读次数
-          </div>
-        
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>胆碱受体分为M受体和N受体，上一节我们知道了M受体激动和N受体激动会产生不同的生理效应，现代药物可以分别阻断不同的受体来产生不同的反应。</p>
-<ul>
-<li>M胆碱受体阻断药：<strong>阿托品</strong>：</li>
-</ul>
-<ol>
-<li><p>心血管系统：</p>
-<p> 1.1 心脏：<strong>小剂量</strong>时ACH受阻负反馈增加，对心脏产生<strong>负性效应</strong>，<strong>大剂量</strong>时ACH完全被阻断，产生<strong>正性效应</strong>，使心率加快，可拮抗房室传导阻滞和心律失常。</p>
-<p> 1.2 血管：阿托品拮抗ACH类药引起的<strong>外周血管扩张</strong>和<strong>血压下降</strong>，大剂量时引起体温升高使散热增加，引起皮肤血管扩张，出现皮肤潮红、温热。</p>
-</li>
-<li><p>平滑肌<br>阿托品对多种内脏平滑肌有<strong>松弛作用</strong>，对过度活动或痉挛的平滑肌作用明显。可以抑制胃肠平滑肌的痉挛，缓解肠胃绞痛，降低尿道和膀胱的张力，接触输尿管张力增高。</p>
-          <div class="read-more">
-            <a href="/2017/12/25/乙酰胆碱的阻断作用/" class="read-more-link">阅读更多</a>
           </div>
         
       
