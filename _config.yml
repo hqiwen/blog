@@ -81,7 +81,7 @@ path: atom.xml
 limit: 20
 content_limit: 140
 ## Themes: https://hexo.io/themes/
-remote_theme: even
+theme: even
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
