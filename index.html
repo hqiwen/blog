@@ -219,6 +219,67 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2018/11/16/计算机系统构造第二期/">计算机系统构造第二期</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-11-16
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/编程/">编程</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2018/11/16/计算机系统构造第二期/"
+             data-title="计算机系统构造第二期">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="模块化、对象和状态"><a href="#模块化、对象和状态" class="headerlink" title="模块化、对象和状态"></a>模块化、对象和状态</h2><p>我们关于世界的常规观点之一，就是将它看作聚集在一起的许多独立对象，每个对象都有自己随着时间变化的状态。所谓一个对象有<strong>状态</strong>，也就是说<strong>它的行为受到它的历史的影响</strong>。</p>
+<h3 id="赋值与局部状态"><a href="#赋值与局部状态" class="headerlink" title="赋值与局部状态"></a>赋值与局部状态</h3><p>假定开始账户里有100元钱，在不断使用withdraw的过程中可以得到以下响应序列：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">withdraw(<span class="number">25</span>) <span class="comment">// 75</span></div><div class="line">withdraw(<span class="number">25</span>) <span class="comment">// 50</span></div><div class="line">withdraw(<span class="number">60</span>) <span class="comment">//余额不足</span></div></pre></td></tr></table></figure>
+<p>可以看到每次执行withdraw的结果不同，我们用一个变量balance去表示账户里的现金余额</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> balance = <span class="number">100</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">withdraw</span>(<span class="params">amount</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(amount &gt; balance)&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"余额不足"</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        balance -= amount;</div><div class="line">        <span class="built_in">console</span>.log(balance);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">withdraw(<span class="number">50</span>);<span class="comment">// 50</span></div><div class="line">withdraw(<span class="number">20</span>);<span class="comment">// 30</span></div><div class="line">withdraw(<span class="number">20</span>);<span class="comment">// 10</span></div><div class="line">----------------------------------</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">new_withdraw</span>(<span class="params">amount</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> balance = <span class="number">100</span>;</div><div class="line">    <span class="keyword">if</span> (amount &gt; balance) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"余额不足"</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        balance -= amount;</div><div class="line">        <span class="built_in">console</span>.log(balance);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> balance;</div><div class="line">&#125;;</div><div class="line">w1 = new_withdraw(<span class="number">50</span>);<span class="comment">// 50</span></div><div class="line">w2 = new_withdraw(<span class="number">20</span>);<span class="comment">// 80</span></div><div class="line">w3 = new_withdraw(<span class="number">20</span>);<span class="comment">// 80</span></div></pre></td></tr></table></figure>
+<p>可以看到w1、w2、w3是各自独立的，互不影响，与所有状态都必须显式地操作和传递额外参数的方式相比，通过引进赋值和将状态隐藏在局部变量中的技术，我们能以一种更模块化的方式构造系统。<br>
+          <div class="read-more">
+            <a href="/2018/11/16/计算机系统构造第二期/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2018/11/09/计算机系统构造/">计算机系统构造浅解第一期</a>
         
       </h1>
@@ -784,66 +845,6 @@
 <p>临床应用：治疗外周血管痉挛性疾病，<strong>顽固性充血性心力衰竭</strong>和<strong>急性心肌梗死</strong>，<strong>抗休克</strong>，药物引起的高血压。<br>
           <div class="read-more">
             <a href="/2017/12/29/肾上腺素受体的阻断作用/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/12/29/肾上腺素受体的激动作用/">肾上腺素受体的激动作用</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017-12-29
-        </span>
-        
-          <div class="post-category">
-            
-              <a href="/categories/医药/">医药</a>
-            
-          </div>
-        
-        
-        <div class="post-visits"
-             data-url="/2017/12/29/肾上腺素受体的激动作用/"
-             data-title="肾上腺素受体的激动作用">
-            阅读次数
-          </div>
-        
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>肾上腺素受体分为 α 受体和 β 受体，对肾上腺素受体亚型的选择性，可以分为3类药：α 受体激动药，β 受体激动药和 α、β 受体激动药。</p>
-<h2 id="α受体激动药-去甲肾上腺素"><a href="#α受体激动药-去甲肾上腺素" class="headerlink" title="α受体激动药:去甲肾上腺素"></a>α受体激动药:去甲肾上腺素</h2><ol>
-<li>血管：激动血管α1受体，使<strong>血管收缩</strong>，主要使小动脉和小静脉收缩，皮肤粘膜血管收缩最明显，其次是肾血管。</li>
-<li>心脏：较弱激动心脏β1受体，对心脏产生<strong>正向效应</strong>。</li>
-</ol>
-          <div class="read-more">
-            <a href="/2017/12/29/肾上腺素受体的激动作用/" class="read-more-link">阅读更多</a>
           </div>
         
       
