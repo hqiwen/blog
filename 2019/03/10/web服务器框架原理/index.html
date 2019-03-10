@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="中文">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="web服务器框架原理"/>
+
+
+
+
+  <meta name="keywords" content="web server express, 知秋" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="知秋">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
+
+
+
+<link rel="canonical" href="https://hqiwen.github.io/2019/03/10/web服务器框架原理/"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
+
+
+
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.1.1/av-min.js"></script>
+  <script id="leancloud">
+    AV.init({
+      appId: "OLgpRILkJfrsQUHnazHgGRve-gzGzoHsz",
+      appKey: "vuP6IIUzplnBML7dVYUiC1ES"
+    });
+  </script>
+
+
+
+
+
+    <title> web服务器框架原理 - 知秋 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">知秋</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/categories/编程">
+        <li class="mobile-menu-item">
+          
+          
+            编程
+          
+        </li>
+      </a>
+    
+      <a href="/categories/随笔">
+        <li class="mobile-menu-item">
+          
+          
+            随笔
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">知秋</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories/编程">
+            
+            
+              编程
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories/随笔">
+            
+            
+              随笔
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          web服务器框架原理
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-03-10
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/编程/">编程</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2019/03/10/web服务器框架原理/"
+             data-title="web服务器框架原理">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原理"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命名空间"><span class="toc-text">命名空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例收集"><span class="toc-text">实例收集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法与运行时"><span class="toc-text">算法与运行时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中间件"><span class="toc-text">中间件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req-和-res-对象的增强"><span class="toc-text">req 和 res 对象的增强</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mvc模式"><span class="toc-text">mvc模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模板引擎"><span class="toc-text">模板引擎</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>通过一个数组收集中间件，然后通过算法让其依次执行，平常所写的业务代码被收集起来，交给框架去最优化运行</p>
+<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> app = &#123;</div><div class="line">    stacks: [];</div><div class="line">&#125;;</div><div class="line"><span class="comment">//监听http请求</span></div><div class="line">app.listen = <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123;</div><div class="line">    <span class="keyword">const</span> server = http.createServer(app.callback);</div><div class="line">    <span class="keyword">return</span> server.listen(...args);</div><div class="line">&#125;;</div><div class="line"><span class="built_in">module</span>.exports = app;</div></pre></td></tr></table></figure>
+<h3 id="实例收集"><a href="#实例收集" class="headerlink" title="实例收集"></a>实例收集</h3><p>通过app.use收集要使用的中间件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">app.use = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> fn === <span class="string">"function"</span>)&#123;</div><div class="line">        <span class="keyword">throw</span>(<span class="string">'middleware must be a function'</span>)</div><div class="line">    &#125;</div><div class="line">    app.stacks.push(fn);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="算法与运行时"><a href="#算法与运行时" class="headerlink" title="算法与运行时"></a>算法与运行时</h3><p>数组的链式调用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">app.callback = <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">    dispatch(req, res, app.stacks);</div><div class="line">&#125;</div><div class="line"><span class="comment">//每当有请求传来，就调用中间件数组</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dispatch</span>(<span class="params">req, res, stack</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> next = <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">            <span class="keyword">return</span> handleError(err, req, res, stack);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">let</span> middleware = stack.shift();</div><div class="line">        <span class="keyword">if</span> (middleware) &#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="comment">//next传递给下一个中间件，形成尾调用</span></div><div class="line">                middleware(req, res, next);</div><div class="line">            &#125; <span class="keyword">catch</span> (err) &#123;</div><div class="line">                next(err);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    next();</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><p>中间件是一个函数，function(req, res, next),<em>req</em>是IncomingMessage对象，<em>res</em>是ServerResponse对象,next函数调用下一个中间件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> query =  <span class="function"><span class="keyword">function</span> <span class="title">query</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> opts = merge(&#123;&#125;, options);</div><div class="line">    <span class="keyword">var</span> queryparse = qs.parse;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> options === <span class="string">"function"</span>) &#123;</div><div class="line">        queryparse = options;</div><div class="line">        opts = <span class="literal">undefined</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">query</span>(<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!req.query) &#123;</div><div class="line">            <span class="keyword">var</span> val = url.parse(req.url).query;</div><div class="line">            req.query = queryparse(val, opts);</div><div class="line">        &#125;</div><div class="line">        next();</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line">app.use(query());</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="req-和-res-对象的增强"><a href="#req-和-res-对象的增强" class="headerlink" title="req 和 res 对象的增强"></a>req 和 res 对象的增强</h3><p>node 本身的 http 模块不能很好地适应业务需求，需要对其改造</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> req = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</div><div class="line"><span class="comment">//req.headers, req.socket, req.method</span></div><div class="line"><span class="keyword">let</span> res = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</div><div class="line"><span class="comment">//res.sendFile, res.json, res.render, res.redirect</span></div><div class="line"></div><div class="line">app.request = req;</div><div class="line">app.response = res;</div></pre></td></tr></table></figure>
+<h2 id="mvc模式"><a href="#mvc模式" class="headerlink" title="mvc模式"></a>mvc模式</h2><h3 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// let tpl = 'hello &lt;%=username%&gt;.'  render(tpl, &#123;username: "jack"&#125;)</span></div><div class="line"> <span class="keyword">let</span> tpl = str.replace(<span class="regexp">/&lt;%=([\s\S]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span> (<span class="params">match, code</span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;code&#125;</span>`</span>;</div><div class="line"> &#125;)</div><div class="line"></div><div class="line"> res.render = <span class="function"><span class="keyword">function</span>(<span class="params">viewName, data</span>) </span>&#123;&#125;;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://hqiwen.github.io">贺启文</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://hqiwen.github.io/2019/03/10/web服务器框架原理/">https://hqiwen.github.io/2019/03/10/web服务器框架原理/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/web-server-express/">web server express</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/11/16/计算机系统构造第二期/">
+        <span class="next-text nav-default">计算机系统构造第二期</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:1726564970@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="/qstund@gmial.com" class="iconfont icon-google" title="google"></a>
+        
+      
+    
+      
+        
+          <a href="https://github.com/hqiwen" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2019
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">贺启文</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'https://hqiwen.github.io/2019/03/10/web服务器框架原理/';
+        this.page.identifier = '2019/03/10/web服务器框架原理/';
+        this.page.title = 'web服务器框架原理';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//https-hqiwen-github-io.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+
+  </body>
+</html>

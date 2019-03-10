@@ -127,20 +127,11 @@
         </li>
       </a>
     
-      <a href="/categories/诗歌">
+      <a href="/categories/随笔">
         <li class="mobile-menu-item">
           
           
-            诗歌
-          
-        </li>
-      </a>
-    
-      <a href="/categories/医药">
-        <li class="mobile-menu-item">
-          
-          
-            医药
+            随笔
           
         </li>
       </a>
@@ -185,19 +176,10 @@
         </li>
       
         <li class="menu-item">
-          <a class="menu-item-link" href="/categories/诗歌">
+          <a class="menu-item-link" href="/categories/随笔">
             
             
-              诗歌
-            
-          </a>
-        </li>
-      
-        <li class="menu-item">
-          <a class="menu-item-link" href="/categories/医药">
-            
-            
-              医药
+              随笔
             
           </a>
         </li>
@@ -213,6 +195,69 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts">
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/03/10/web服务器框架原理/">web服务器框架原理</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-03-10
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/编程/">编程</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2019/03/10/web服务器框架原理/"
+             data-title="web服务器框架原理">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>通过一个数组收集中间件，然后通过算法让其依次执行，平常所写的业务代码被收集起来，交给框架去最优化运行</p>
+<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> app = &#123;</div><div class="line">    stacks: [];</div><div class="line">&#125;;</div><div class="line"><span class="comment">//监听http请求</span></div><div class="line">app.listen = <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123;</div><div class="line">    <span class="keyword">const</span> server = http.createServer(app.callback);</div><div class="line">    <span class="keyword">return</span> server.listen(...args);</div><div class="line">&#125;;</div><div class="line"><span class="built_in">module</span>.exports = app;</div></pre></td></tr></table></figure>
+<h3 id="实例收集"><a href="#实例收集" class="headerlink" title="实例收集"></a>实例收集</h3><p>通过app.use收集要使用的中间件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">app.use = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> fn === <span class="string">"function"</span>)&#123;</div><div class="line">        <span class="keyword">throw</span>(<span class="string">'middleware must be a function'</span>)</div><div class="line">    &#125;</div><div class="line">    app.stacks.push(fn);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="算法与运行时"><a href="#算法与运行时" class="headerlink" title="算法与运行时"></a>算法与运行时</h3><p>数组的链式调用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">app.callback = <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">    dispatch(req, res, app.stacks);</div><div class="line">&#125;</div><div class="line"><span class="comment">//每当有请求传来，就调用中间件数组</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dispatch</span>(<span class="params">req, res, stack</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> next = <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">            <span class="keyword">return</span> handleError(err, req, res, stack);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">let</span> middleware = stack.shift();</div><div class="line">        <span class="keyword">if</span> (middleware) &#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="comment">//next传递给下一个中间件，形成尾调用</span></div><div class="line">                middleware(req, res, next);</div><div class="line">            &#125; <span class="keyword">catch</span> (err) &#123;</div><div class="line">                next(err);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    next();</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><p>中间件是一个函数，function(req, res, next),<em>req</em>是IncomingMessage对象，<em>res</em>是ServerResponse对象,next函数调用下一个中间件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> query =  <span class="function"><span class="keyword">function</span> <span class="title">query</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> opts = merge(&#123;&#125;, options);</div><div class="line">    <span class="keyword">var</span> queryparse = qs.parse;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> options === <span class="string">"function"</span>) &#123;</div><div class="line">        queryparse = options;</div><div class="line">        opts = <span class="literal">undefined</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">query</span>(<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!req.query) &#123;</div><div class="line">            <span class="keyword">var</span> val = url.parse(req.url).query;</div><div class="line">            req.query = queryparse(val, opts);</div><div class="line">        &#125;</div><div class="line">        next();</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line">app.use(query());</div></pre></td></tr></table></figure>
+          <div class="read-more">
+            <a href="/2019/03/10/web服务器框架原理/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
     
       
   <article class="post">
@@ -330,6 +375,70 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">squareSum</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> square(x) + square(y);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <div class="read-more">
             <a href="/2018/11/09/计算机系统构造/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2018/11/09/前后端渲染对比/">精读前后端渲染之争</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-11-09
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/编程/">编程</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2018/11/09/前后端渲染对比/"
+             data-title="精读前后端渲染之争">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <blockquote>
+<p>本文转载自<a href="https://medium.freecodecamp.com/heres-why-client-side-rendering-won-46a349fadb52" target="_blank" rel="external">Here’s why Client-side Rendering Won</a>,同时<a href="https://github.com/camsong/blog/issues/8" target="_blank" rel="external">中文翻译地址</a>，如果想获得更好的阅读体验，请阅读原文</p>
+</blockquote>
+<p>1 引言</p>
+<p>我为什么要选这篇文章呢？</p>
+<img src="/2018/11/09/前后端渲染对比/ca1b6618-2209-11e7-99ae-c2a75ad3dabb.png" alt="ca1b6618-2209-11e7-99ae-c2a75ad3dabb.png" title="">
+<p>十年前，几乎所有网站都使用 ASP、Java、PHP 这类做后端渲染，但后来随着 jQuery、Angular、React、Vue 等 JS 框架的崛起，开始转向了前端渲染。从 2014 年起又开始流行了同构渲染，号称是未来，集成了前后端渲染的优点，但转眼间三年过去了，很多当时壮心满满的框架（rendr、Lazo）从先驱变成了先烈。同构到底是不是未来？自己的项目该如何选型？我想不应该只停留在追求热门和拘泥于固定模式上，忽略了前后端渲染之“争”的“核心点”，关注如何提升“用户体验”。</p>
+<p>原文分析了前端渲染的优势，并没有进行深入探讨。我想以它为切入口来深入探讨一下。</p>
+<p>明确三个概念：「后端渲染」指传统的 ASP、Java 或 PHP 的渲染机制；「前端渲染」指使用 JS 来渲染页面大部分内容，代表是现在流行的 SPA 单页面应用；「同构渲染」指前后端共用 JS，首次渲染时使用 Node.js 来直出 HTML。一般来说同构渲染是介于前后端中的共有部分。<br>
+          <div class="read-more">
+            <a href="/2018/11/09/前后端渲染对比/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -611,7 +720,7 @@
         
           <div class="post-category">
             
-              <a href="/categories/医药/">医药</a>
+              <a href="/categories/随笔/">随笔</a>
             
           </div>
         
@@ -694,7 +803,7 @@
         
           <div class="post-category">
             
-              <a href="/categories/医药/">医药</a>
+              <a href="/categories/随笔/">随笔</a>
             
           </div>
         
@@ -726,125 +835,6 @@
 <p>临床用途：青光眼(降低眼内压，抑制房水分泌)、急性高山病<br>
           <div class="read-more">
             <a href="/2018/03/09/肾的功能性利尿/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/03/09/肾的内分泌药理/">肾的内分泌药理</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-03-09
-        </span>
-        
-          <div class="post-category">
-            
-              <a href="/categories/医药/">医药</a>
-            
-          </div>
-        
-        
-        <div class="post-visits"
-             data-url="/2018/03/09/肾的内分泌药理/"
-             data-title="肾的内分泌药理">
-            阅读次数
-          </div>
-        
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>肾脏是人体的过滤和排泄废物的器官，有保留$Na^{+}$排出$K^{+}$分泌$H^{+}$的作用，同时可以控制尿量来维持血容量，与心血管系统的功能密切相关。</p>
-<p>肾脏可以分泌肾素，肾素使血管紧张素原转化成血管紧张素1（Ang1），血管紧张素1（Ang1）可以在血管紧张素转化酶（ACE）的作用下转化成血管紧张素2（Ang2）。Ang2有两个受体$AT<em>{1}$<br>和<br>$AT</em>{2}$,$AT<em>{1}$受体激动产生<strong>收缩血管</strong>，促进醛固酮的释放，增加血容量，<strong>升高血压</strong>等作用，还有生长激素样作用，可以<strong>促进心肌肥大</strong>，$AT</em>{2}$受体激活缓激肽受体和NO合酶，产生NO，<strong>舒张血管</strong>，<strong>降低血压</strong>，促进细胞凋亡。<br>
-          <div class="read-more">
-            <a href="/2018/03/09/肾的内分泌药理/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/12/29/肾上腺素受体的阻断作用/">肾上腺素受体的阻断作用</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017-12-29
-        </span>
-        
-          <div class="post-category">
-            
-              <a href="/categories/医药/">医药</a>
-            
-          </div>
-        
-        
-        <div class="post-visits"
-             data-url="/2017/12/29/肾上腺素受体的阻断作用/"
-             data-title="肾上腺素受体的阻断作用">
-            阅读次数
-          </div>
-        
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>前一章提到了肾上腺素受体的三种激动作用，与之对应存在三种阻断药：α受体阻断药、β受体阻断药以及 α、β受体阻断药。</p>
-<h2 id="α受体阻断药：酚妥拉明"><a href="#α受体阻断药：酚妥拉明" class="headerlink" title="α受体阻断药：酚妥拉明"></a>α受体阻断药：酚妥拉明</h2><ul>
-<li>血管：酚妥拉明具有阻断血管平滑肌α受体和直接<strong>扩张血管</strong>作用。</li>
-<li>心脏：酚妥拉明可<strong>兴奋心脏</strong>，使心脏收缩力增强，心率加快，心输出量增加，与阻断α受体，β受体反馈性增加有关，β受体可对心脏产生正性做作用。</li>
-<li>酚妥拉明可引起皮肤潮红。</li>
-</ul>
-<p>临床应用：治疗外周血管痉挛性疾病，<strong>顽固性充血性心力衰竭</strong>和<strong>急性心肌梗死</strong>，<strong>抗休克</strong>，药物引起的高血压。<br>
-          <div class="read-more">
-            <a href="/2017/12/29/肾上腺素受体的阻断作用/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -942,7 +932,7 @@
      
       2015 - 
     
-    2018
+    2019
 
     <span class="heart">
       <i class="iconfont icon-heart"></i>
