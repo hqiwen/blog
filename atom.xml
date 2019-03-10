@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hqiwen.github.io/"/>
-  <updated>2019-03-10T02:32:53.685Z</updated>
+  <updated>2019-03-10T06:15:02.730Z</updated>
   <id>https://hqiwen.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构之排序</title>
+    <link href="https://hqiwen.github.io/2019/03/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E6%8E%92%E5%BA%8F/"/>
+    <id>https://hqiwen.github.io/2019/03/10/数据结构之排序/</id>
+    <published>2019-03-10T03:27:57.000Z</published>
+    <updated>2019-03-10T06:15:02.730Z</updated>
+    
+    <content type="html"><![CDATA[<p>排序就是将一组对象按照某种逻辑重新排列的过程。</p><h2 id="初级排序算法"><a href="#初级排序算法" class="headerlink" title="初级排序算法"></a>初级排序算法</h2><h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>不断重复找到最小的元素，移到相应位置。{0-N} = {0, 1, 2,..N}, {n} = swap( nums[n], min{ nums[n~nums.length] } )</p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> nums = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>];</div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">0</span>; i&lt; nums.length; i++) &#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = i; j &lt; nums.length; j++) &#123;</div><div class="line">        minNum = min(minNum, nums[j]);</div><div class="line">    &#125;</div><div class="line">    swap(minNum, nums[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>有 N 次交换和N+(N-1)+..+2+1~N^2/2次比较</p><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>每次将一个数插入有序数组的适当位置。{0-N} = {0, 1, 2,..N},{n} = { nums[0~n]}.swap( less(nums[n], nums[n-1]) )</p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;nums.length; i++) &#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = i; j &gt;<span class="number">0</span>; j--)&#123;</div><div class="line">        <span class="keyword">if</span>(num[j] &lt; nums[j<span class="number">-1</span>]) &#123;</div><div class="line">            swap(nums[j], nums[j<span class="number">-1</span>]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>插入排序所需的时间与输入的元素的初始顺序有关，最坏情况下需要N^2/2次比较和N^2/2次交换，最好需要N-1次比较和0次交换<br><a id="more"></a></p><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>要将一个数组排序，可以递归地将它分成两半分别排序，然后在合并起来。{0-N} = merge( {0-N/2},  {N/2-N} );<br>merge(n) = { min( {0-n/2}, {n/2-n} ) }。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">nums, lo, hi</span>) </span>&#123;</div><div class="line">   <span class="keyword">let</span>  mid = (lo + hi ) / <span class="number">2</span>;</div><div class="line">    sort(nums, lo, mid);</div><div class="line">    sort(nums, mid+<span class="number">1</span>, hi);</div><div class="line">    merge(nums,lo, mid, hi);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge</span>(<span class="params">nums, low, mid, high</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> i = lo, j = mid +<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> k = lo; k &lt;= high, k++) &#123;</div><div class="line">        aux[k] = nums[k];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> k =lo; k&lt;=high;k++) &#123;</div><div class="line">        <span class="keyword">if</span>(i&gt;mid) a[k] = aux[j++];</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(j &gt; hi) a[k] = aux[i++];</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(less(aux[j], aux[k])) a[k] = aux[j++];</div><div class="line">        <span class="keyword">else</span> a[k] = aux[i++];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>时间复杂度NlgN,空间复杂度N,比初级算法较优</p><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>当两个子数组有序时，就完成了排序。{0-N} = {0-K} + {K-N};partition(n) = swap( n1&lt;k, k&lt;n2 ),k = nums[lo]</p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">nums, lo, hi</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> j = partition(nums,lo, hi);</div><div class="line">    sort(nums, lo, j<span class="number">-1</span>);</div><div class="line">    sort(nums, j+<span class="number">1</span>, hi);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">partition</span>(<span class="params">nums, lo ,hi</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> i = lo, j = hi, k = nums[lo];</div><div class="line">    <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</div><div class="line">        <span class="keyword">while</span>(a[++i] &lt; k) <span class="keyword">if</span>(i = hi) <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">while</span>(a[++j] &gt; k) <span class="keyword">if</span>(j = lo) <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">if</span>(i&gt;j) <span class="keyword">break</span>;</div><div class="line">        swap(nums[i], nums[j]);</div><div class="line">    &#125;</div><div class="line">    swap(nums[lo], nums[j]);</div><div class="line">    <span class="keyword">return</span> j;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>时间复杂度NlgN,空间复杂度lgN</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;排序就是将一组对象按照某种逻辑重新排列的过程。&lt;/p&gt;
+&lt;h2 id=&quot;初级排序算法&quot;&gt;&lt;a href=&quot;#初级排序算法&quot; class=&quot;headerlink&quot; title=&quot;初级排序算法&quot;&gt;&lt;/a&gt;初级排序算法&lt;/h2&gt;&lt;h3 id=&quot;选择排序&quot;&gt;&lt;a href=&quot;#选择排序&quot; class=&quot;headerlink&quot; title=&quot;选择排序&quot;&gt;&lt;/a&gt;选择排序&lt;/h3&gt;&lt;p&gt;不断重复找到最小的元素，移到相应位置。{0-N} = {0, 1, 2,..N}, {n} = swap( nums[n], min{ nums[n~nums.length] } )&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; nums = [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; i =&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i&amp;lt; nums.length; i++) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; j = i; j &amp;lt; nums.length; j++) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        minNum = min(minNum, nums[j]);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    swap(minNum, nums[i]);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;有 N 次交换和N+(N-1)+..+2+1~N^2/2次比较&lt;/p&gt;
+&lt;h3 id=&quot;插入排序&quot;&gt;&lt;a href=&quot;#插入排序&quot; class=&quot;headerlink&quot; title=&quot;插入排序&quot;&gt;&lt;/a&gt;插入排序&lt;/h3&gt;&lt;p&gt;每次将一个数插入有序数组的适当位置。{0-N} = {0, 1, 2,..N},{n} = { nums[0~n]}.swap( less(nums[n], nums[n-1]) )&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;i&amp;lt;nums.length; i++) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; j = i; j &amp;gt;&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; j--)&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(num[j] &amp;lt; nums[j&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;]) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            swap(nums[j], nums[j&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;]);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;插入排序所需的时间与输入的元素的初始顺序有关，最坏情况下需要N^2/2次比较和N^2/2次交换，最好需要N-1次比较和0次交换&lt;br&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://hqiwen.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="数组 排序" scheme="https://hqiwen.github.io/tags/%E6%95%B0%E7%BB%84-%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>web服务器框架原理</title>
@@ -555,35 +583,6 @@
 &lt;p&gt;追逐着的&lt;/p&gt;
 &lt;p&gt;记忆与成熟&lt;/p&gt;
 &lt;p&gt;缓了下来&lt;br&gt;
-    
-    </summary>
-    
-      <category term="随笔" scheme="https://hqiwen.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>滨江</title>
-    <link href="https://hqiwen.github.io/2017/09/23/%E6%BB%A8%E6%B1%9F/"/>
-    <id>https://hqiwen.github.io/2017/09/23/滨江/</id>
-    <published>2017-09-23T05:25:51.000Z</published>
-    <updated>2018-11-23T09:13:35.937Z</updated>
-    
-    <content type="html"><![CDATA[<img src="/2017/09/23/滨江/image.jpg" alt="image.jpg" title=""><p>月光撒在身上</p><p>给你平添了一份神圣与高洁</p><p>光的影</p><p>鱼的歌</p><p>你就是这里的主宰</p><p>流动的水波是你灵动的眼眸</p><p>横跨的桥梁是你美丽的发带</p><p>两岸的土地随着你延伸开去</p><p>那是你不一样的宽阔情怀<br><a id="more"></a><br>这里是嘈杂环境里的静地</p><p>我为之欢呼</p><p>对你诉说你的美，你的歌</p><p>你那包容一切的善良</p><p>令人深深着迷</p><p>像一杯酒</p><p>惹人醉，醉了之后还心碎</p><p>我问你你的名字</p><p>你亦沉默不答</p><p>想来</p><p>我不过是个旅人</p><p>这样匆匆</p><p>滨江一夜</p><p>至此无缘再面见你的温柔</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;img src=&quot;/2017/09/23/滨江/image.jpg&quot; alt=&quot;image.jpg&quot; title=&quot;&quot;&gt;
-&lt;p&gt;月光撒在身上&lt;/p&gt;
-&lt;p&gt;给你平添了一份神圣与高洁&lt;/p&gt;
-&lt;p&gt;光的影&lt;/p&gt;
-&lt;p&gt;鱼的歌&lt;/p&gt;
-&lt;p&gt;你就是这里的主宰&lt;/p&gt;
-&lt;p&gt;流动的水波是你灵动的眼眸&lt;/p&gt;
-&lt;p&gt;横跨的桥梁是你美丽的发带&lt;/p&gt;
-&lt;p&gt;两岸的土地随着你延伸开去&lt;/p&gt;
-&lt;p&gt;那是你不一样的宽阔情怀&lt;br&gt;
     
     </summary>
     

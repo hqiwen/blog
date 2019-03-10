@@ -127,6 +127,15 @@
         </li>
       </a>
     
+      <a href="/categories/算法">
+        <li class="mobile-menu-item">
+          
+          
+            算法
+          
+        </li>
+      </a>
+    
       <a href="/categories/随笔">
         <li class="mobile-menu-item">
           
@@ -176,6 +185,15 @@
         </li>
       
         <li class="menu-item">
+          <a class="menu-item-link" href="/categories/算法">
+            
+            
+              算法
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
           <a class="menu-item-link" href="/categories/随笔">
             
             
@@ -195,6 +213,68 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts">
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/03/10/数据结构之排序/">数据结构之排序</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-03-10
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/算法/">算法</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2019/03/10/数据结构之排序/"
+             data-title="数据结构之排序">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>排序就是将一组对象按照某种逻辑重新排列的过程。</p>
+<h2 id="初级排序算法"><a href="#初级排序算法" class="headerlink" title="初级排序算法"></a>初级排序算法</h2><h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>不断重复找到最小的元素，移到相应位置。{0-N} = {0, 1, 2,..N}, {n} = swap( nums[n], min{ nums[n~nums.length] } )</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> nums = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>];</div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">0</span>; i&lt; nums.length; i++) &#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = i; j &lt; nums.length; j++) &#123;</div><div class="line">        minNum = min(minNum, nums[j]);</div><div class="line">    &#125;</div><div class="line">    swap(minNum, nums[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>有 N 次交换和N+(N-1)+..+2+1~N^2/2次比较</p>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>每次将一个数插入有序数组的适当位置。{0-N} = {0, 1, 2,..N},{n} = { nums[0~n]}.swap( less(nums[n], nums[n-1]) )</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;nums.length; i++) &#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = i; j &gt;<span class="number">0</span>; j--)&#123;</div><div class="line">        <span class="keyword">if</span>(num[j] &lt; nums[j<span class="number">-1</span>]) &#123;</div><div class="line">            swap(nums[j], nums[j<span class="number">-1</span>]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>插入排序所需的时间与输入的元素的初始顺序有关，最坏情况下需要N^2/2次比较和N^2/2次交换，最好需要N-1次比较和0次交换<br>
+          <div class="read-more">
+            <a href="/2019/03/10/数据结构之排序/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
     
       
   <article class="post">
@@ -775,66 +855,6 @@
 </table>
           <div class="read-more">
             <a href="/2018/03/09/麻醉药/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/03/09/肾的功能性利尿/">肾的功能性利尿</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-03-09
-        </span>
-        
-          <div class="post-category">
-            
-              <a href="/categories/随笔/">随笔</a>
-            
-          </div>
-        
-        
-        <div class="post-visits"
-             data-url="/2018/03/09/肾的功能性利尿/"
-             data-title="肾的功能性利尿">
-            阅读次数
-          </div>
-        
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>肾脏是排出$Na^+$、$Cl^-$等电解质和水的重要器官，加速电解质和水的排出，就称为利尿。利尿药主要用于各种原因引起的水肿，如心力衰竭、肾衰竭以及肝硬化，也可用于高血压、肾结石、高血钙等的治疗。</p>
-<img src="/2018/03/09/肾的功能性利尿/U.jpg" alt="U.jpg" title="">
-<p>常用利尿药可以分为5类：</p>
-<h2 id="碳酸酐酶抑制药：乙酰脞胺"><a href="#碳酸酐酶抑制药：乙酰脞胺" class="headerlink" title="碳酸酐酶抑制药：乙酰脞胺"></a>碳酸酐酶抑制药：乙酰脞胺</h2><p>通过抑制碳酸酐酶的活性而抑制$HCO_3^-$的重吸收，由于离子交换，造成尿中H、$K^+$、水($Na^+$)的排出增多。同时也可抑制房水和脑脊液的分泌，本品利尿作用弱，少用。</p>
-<p>临床用途：青光眼(降低眼内压，抑制房水分泌)、急性高山病<br>
-          <div class="read-more">
-            <a href="/2018/03/09/肾的功能性利尿/" class="read-more-link">阅读更多</a>
           </div>
         
       
