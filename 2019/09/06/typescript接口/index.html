@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="中文">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="typescript接口"/>
+
+
+
+
+  <meta name="keywords" content="typescript 接口, 知秋" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="知秋">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
+
+
+
+<link rel="canonical" href="https://hqiwen.github.io/2019/09/06/typescript接口/"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
+
+
+
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.1.1/av-min.js"></script>
+  <script id="leancloud">
+    AV.init({
+      appId: "OLgpRILkJfrsQUHnazHgGRve-gzGzoHsz",
+      appKey: "vuP6IIUzplnBML7dVYUiC1ES"
+    });
+  </script>
+
+
+
+
+
+    <title> typescript接口 - 知秋 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">知秋</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/categories/编程">
+        <li class="mobile-menu-item">
+          
+          
+            编程
+          
+        </li>
+      </a>
+    
+      <a href="/categories/算法">
+        <li class="mobile-menu-item">
+          
+          
+            算法
+          
+        </li>
+      </a>
+    
+      <a href="/categories/随笔">
+        <li class="mobile-menu-item">
+          
+          
+            随笔
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">知秋</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories/编程">
+            
+            
+              编程
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories/算法">
+            
+            
+              算法
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories/随笔">
+            
+            
+              随笔
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          typescript接口
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-09-06
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/编程/">编程</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2019/09/06/typescript接口/"
+             data-title="typescript接口">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#具名接口"><span class="toc-text">具名接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的接口"><span class="toc-text">对象的接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数的接口"><span class="toc-text">函数的接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性的约束"><span class="toc-text">属性的约束</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#可选属性"><span class="toc-text">可选属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#只读属性"><span class="toc-text">只读属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#额外的属性检查-对象字面量和数组"><span class="toc-text">额外的属性检查(对象字面量和数组)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现接口"><span class="toc-text">实现接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类实现接口"><span class="toc-text">类实现接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接口继承接口"><span class="toc-text">接口继承接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接口继承类"><span class="toc-text">接口继承类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类与接口的关系"><span class="toc-text">类与接口的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一个类实现多个接口"><span class="toc-text">一个类实现多个接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多个类实现一个接口"><span class="toc-text">多个类实现一个接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用接口实现一个排序系统"><span class="toc-text">用接口实现一个排序系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口与抽象类的区别"><span class="toc-text">接口与抽象类的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <p>在计算机中，接口是计算机系统中两个独立的部件进行信息交换的共享边界。这种交换可以发生在计算机软、硬件，外部设备或进行操作的人之间，也可以是它们的结合。<br>Typescript通过类型检查的方式减少了程序犯错误的机率，但是不能约束代码的产出方式，模块暴露出的API变更之后会产生一系列的麻烦。在TypeScript里，接口的作用就是规范代码，为需要约束的类型命名和为你的代码或第三方代码定义产出方式。因为typescript认为约束条件一样时是属于同一类，所以它有时被称做“鸭式辨型法”或“结构性子类型化”。</p>
+<h2 id="具名接口"><a href="#具名接口" class="headerlink" title="具名接口"></a>具名接口</h2><p>通过<code>interface</code>关键词为<strong>约束条件</strong>添加名字，主要为对象和函数添加约束，利用typescript中提到的类型：</p>
+<ol>
+<li>string</li>
+<li>number</li>
+<li>boolean</li>
+<li>symbol</li>
+<li>array</li>
+<li>function</li>
+<li>object</li>
+<li>null</li>
+<li>undefined</li>
+<li>any</li>
+<li>void</li>
+<li>tuple</li>
+<li>unknown</li>
+<li>never</li>
+<li>字面量类型</li>
+</ol>
+<h3 id="对象的接口"><a href="#对象的接口" class="headerlink" title="对象的接口"></a>对象的接口</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> User&#123;</div><div class="line">    name: <span class="built_in">string</span>;</div><div class="line">    id: <span class="built_in">number</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">interface</span> Car&#123;</div><div class="line">    name: <span class="built_in">string</span>;</div><div class="line">    id: <span class="built_in">number</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> user: User = &#123;</div><div class="line">    name: <span class="string">"lily"</span>,</div><div class="line">    id: <span class="number">3</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> car: Car = &#123;</div><div class="line">    name: <span class="string">"tick"</span>,</div><div class="line">    id: <span class="number">1</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUserName</span>(<span class="params">user: User</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> user.name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">getUserName(car);</div></pre></td></tr></table></figure>
+<p>函数getUserName限制传入参数为User类，可是我们传入了一个Car类，并且没有报错，这是为什么呢？User类的约束条件为<code>function test(obj) { return obj === {} &amp;&amp; obj.name !== undefined &amp;&amp; obj.id !== undefined;}</code>,同时Car类的约束条件也是一样的，所以函数可以传入Car类，所以typescript有时被称做“鸭式辨型法”或“结构性子类型化”。</p>
+<h3 id="函数的接口"><a href="#函数的接口" class="headerlink" title="函数的接口"></a>函数的接口</h3><p>为函数添加约束条件，约束函数的传入参数和返回值，与第四章添加函数的类型检查时一样。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> isArray&#123;</div><div class="line">    (array: []): <span class="built_in">boolean</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> isArray : isArray = <span class="function"><span class="keyword">function</span>(<span class="params">array: []</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(array) === <span class="string">'[object Array]'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="属性的约束"><a href="#属性的约束" class="headerlink" title="属性的约束"></a>属性的约束</h2><p>检查对象的属性分为必须、可选、只读，函数的参数有必须、可选之分</p>
+<h3 id="可选属性"><a href="#可选属性" class="headerlink" title="可选属性"></a>可选属性</h3><p>有时候不确定某个属性是否存在时，在声明的属性后面加入一个<code>?</code>，就可以使属性变得可选。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> User&#123;</div><div class="line">    name: <span class="built_in">string</span>;</div><div class="line">    id?: <span class="built_in">number</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> user: User = &#123;</div><div class="line">    name: <span class="string">"boy"</span>,</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> user1:User = &#123;</div><div class="line">    name: <span class="string">"jack"</span>,</div><div class="line">    id: <span class="number">4</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createUser</span>(<span class="params">name: <span class="built_in">string</span>, id?: <span class="built_in">number</span></span>): <span class="title">User</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        name: name,</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>检查条件为<code>function test(obj) { return (obj === {} &amp;&amp; obj.name !== undefined &amp;&amp; obj.id !== undefined;) || obj === {} &amp;&amp; obj.id !== undefined;}</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> User&#123;</div><div class="line">    name: <span class="built_in">string</span>;</div><div class="line">    id?: <span class="built_in">number</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> app;</div><div class="line"><span class="keyword">let</span> user1: User = (app = &#123;</div><div class="line">    name: <span class="string">"ccc"</span>,</div><div class="line">    card: <span class="string">"d"</span>,</div><div class="line">    <span class="built_in">number</span>: <span class="number">1</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//Error: card属性不存在User类型里面</span></div><div class="line"><span class="built_in">console</span>.log(user1.card);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app;</div><div class="line"><span class="keyword">var</span> user1 = (app = &#123;</div><div class="line">    name: <span class="string">"ccc"</span>,</div><div class="line">    card: <span class="string">"d"</span>,</div><div class="line">    number: <span class="number">1</span></div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(user1.card);<span class="comment">// "d"</span></div></pre></td></tr></table></figure>
+<p>虽然声明user1对象时，没有报错，但是使用除了name和id之外的属性时，会报错，这里看到app对象<strong>绕过</strong>了User的类型检查，但是强制翻译ts文件（不推荐这么做），可以得到<code>user1.card</code>的值为d,虽然typescript在类型检查阶段报错了，但是并不程序影响正确执行</p>
+<h3 id="只读属性"><a href="#只读属性" class="headerlink" title="只读属性"></a>只读属性</h3><p>当不希望属性的值被更改时，可以设置属性可读。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> User&#123;</div><div class="line">    name: <span class="built_in">string</span>;</div><div class="line">    readonly id: <span class="built_in">number</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> user1:User = &#123;</div><div class="line">    name: <span class="string">"jack"</span>,</div><div class="line">    id: <span class="number">4</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">user1.id = <span class="number">1</span>;<span class="comment">//错误：无法对id赋值因为它是一个只读属性。</span></div></pre></td></tr></table></figure>
+<p>检查条件为</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">    <span class="built_in">Object</span>.defineProperty(obj, <span class="string">"id"</span>, &#123;</div><div class="line">        writable: <span class="literal">false</span>,</div><div class="line">    &#125;)</div><div class="line">    <span class="keyword">return</span> obj === &#123;&#125; &amp;&amp; obj.name !== <span class="literal">undefined</span> &amp;&amp; obj.id !== <span class="literal">undefined</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="额外的属性检查-对象字面量和数组"><a href="#额外的属性检查-对象字面量和数组" class="headerlink" title="额外的属性检查(对象字面量和数组)"></a>额外的属性检查(对象字面量和数组)</h3><p>由于JavaScript的动态性，可以先声明对象，在添加属性，typescript为了实现这一特性，添加了额外的属性检查，这允许动态添加属性。对象字面量会被特殊对待而且会经过 额外属性检查，当将它们赋值给变量或作为参数传递的时候。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> Card&#123;</div><div class="line">    readonly id: <span class="built_in">number</span>;</div><div class="line">    name: <span class="built_in">string</span>;</div><div class="line">    [key: <span class="built_in">string</span>]: <span class="built_in">string</span> | <span class="built_in">number</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> card:Card = &#123;</div><div class="line">    name: <span class="string">"jack"</span>,</div><div class="line">    id: <span class="number">4</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">card.size = <span class="number">20</span>;</div><div class="line">card.price = <span class="string">`$1`</span>;</div><div class="line"></div><div class="line"><span class="keyword">interface</span> StringArray &#123;</div><div class="line">    [index: <span class="built_in">number</span>]: <span class="built_in">string</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> myArray: StringArray = [<span class="string">"Bob"</span>, <span class="string">"Fred"</span>];</div><div class="line">myArray.push(<span class="string">"Alice"</span>);</div><div class="line"></div><div class="line"><span class="keyword">let</span> myStr: <span class="built_in">string</span> = myArray[<span class="number">0</span>];</div></pre></td></tr></table></figure>
+<p>需要注意的地方是对象所有属性的<code>key</code>为string类型，<code>value</code>为string或者number类型。</p>
+<h2 id="实现接口"><a href="#实现接口" class="headerlink" title="实现接口"></a>实现接口</h2><h3 id="类实现接口"><a href="#类实现接口" class="headerlink" title="类实现接口"></a>类实现接口</h3><p>面向对象编程中最重要的实现是类，如何用接口去约束类，是typescript检查的重点。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> ClockInterface &#123;</div><div class="line">    currentTime: <span class="built_in">Date</span>;</div><div class="line">    getTime() : <span class="built_in">Date</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Clock <span class="keyword">implements</span> ClockInterface &#123;</div><div class="line">    currentTime: <span class="built_in">Date</span>;</div><div class="line">    <span class="keyword">constructor</span>(<span class="params">h: <span class="built_in">number</span>, m: <span class="built_in">number</span></span>) &#123; &#125;</div><div class="line">    getTime() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.currentTime;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里简单的声明了一个接口，实现接口的类必须要有一个属性currentTime为Date类型,一个方法叫做<code>getTime</code>并返回一个Date类型的值。</p>
+<p>当你操作类和接口的时候，你要知道类（类是由函数模拟而来）是具有两个类型的：静态部分的类型（存在于函数的属性上）和实例的类型（存在于函数的原型链上）。因为当一个类实现了一个接口时，只对其实例部分进行类型检查。 constructor存在于类的静态部分，所以不在检查的范围内。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//不能检查构造函数</span></div><div class="line"><span class="keyword">interface</span> ClockConstructor &#123;</div><div class="line">    <span class="keyword">new</span> (hour: <span class="built_in">number</span>, minute: <span class="built_in">number</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Clock <span class="keyword">implements</span> ClockConstructor &#123;</div><div class="line">    currentTime: <span class="built_in">Date</span>;</div><div class="line">    <span class="keyword">constructor</span>(<span class="params">h: <span class="built_in">number</span>, m: <span class="built_in">number</span></span>) &#123; &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 构造函数通过函数来检查</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createClock</span>(<span class="params">ctor: ClockConstructor, h: <span class="built_in">number</span>, m: <span class="built_in">number</span></span>): <span class="title">ClockConstructor</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ctor(h: <span class="built_in">number</span>, m: <span class="built_in">number</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="接口继承接口"><a href="#接口继承接口" class="headerlink" title="接口继承接口"></a>接口继承接口</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> Point&#123;</div><div class="line">    x: <span class="built_in">number</span>;</div><div class="line">    y: <span class="built_in">number</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">interface</span> ThreePoint <span class="keyword">extends</span> Point&#123;</div><div class="line">    z: <span class="built_in">number</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> point: ThreePoint = &#123;</div><div class="line">    x: <span class="number">0</span>,</div><div class="line">    y: <span class="number">0</span>,</div><div class="line">    z: <span class="number">0</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>前面说到typescript为结构性子类型化，可以看到接口threePoint的检查类型比接口Point的更严格，在检查x,y的属性上额外添加了对z的属性检查。</p>
+<h3 id="接口继承类"><a href="#接口继承类" class="headerlink" title="接口继承类"></a>接口继承类</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Box &#123;</div><div class="line">    <span class="keyword">private</span> state: <span class="built_in">boolean</span>;</div><div class="line">    pick() &#123; &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">interface</span> selectBox <span class="keyword">extends</span> Box &#123;</div><div class="line">    select(): <span class="built_in">void</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//Error: Property 'state' is private in type 'selectBox' but not in type 'textForm'.</span></div><div class="line"><span class="keyword">class</span> textForm <span class="keyword">implements</span> selectBox &#123;</div><div class="line">    state: <span class="built_in">boolean</span>;</div><div class="line">    select() &#123;&#125;</div><div class="line">    pick() &#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Button <span class="keyword">extends</span> Box <span class="keyword">implements</span> selectBox &#123;</div><div class="line">    select() &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到Box类私有属性state被selectBox接口继承了,则会生成下面这个接口：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> selectBox &#123;</div><div class="line">    <span class="keyword">private</span> state: <span class="built_in">boolean</span>;</div><div class="line">    pick() &#123; &#125;;</div><div class="line">    select(): <span class="built_in">void</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>textForm类必须实现state，pick()方法,select()方法，由于state为私有属性，所以会报错。因为state是私有成员，所以只能Box的子类们才能实现selectBox接口，只有Box的子类才能够拥有一个声明于Box的私有成员state。</p>
+<blockquote>
+<p>无论父类中的成员变量是私有的、共有的、还是其它类型的，子类都会拥有父类中的这些成员变量。但是父类中的私有成员变量，无法在子类中直接访问，必须通过从父类中继承得到的protected、public方法（如getter、setter方法）来访问。这是因为子类对父类进行了<strong>屏蔽</strong>。</p>
+</blockquote>
+<h2 id="类与接口的关系"><a href="#类与接口的关系" class="headerlink" title="类与接口的关系"></a>类与接口的关系</h2><p>类型和接口之间有一对多和多对一的关系，下面将列举出这些常见的概念，以方便读者理解接口与类型在复杂环境下的实现关系。</p>
+<h3 id="一个类实现多个接口"><a href="#一个类实现多个接口" class="headerlink" title="一个类实现多个接口"></a>一个类实现多个接口</h3><p>一个类型可以同时实现多个接口，而接口间彼此独立，不知道对方的实现。</p>
+<p>网络上的两个程序通过一个双向的通信连接实现数据的交换，连接的一端称为一个 Socket。Socket 能够同时读取和写入数据，这个特性与文件类似。因此，开发中把文件和 Socket 都具备的读写特性抽象为独立的读写器概念。Socket 和文件一样，在使用完毕后，也需要对资源进行释放。把 Socket 能够写入数据和需要关闭的特性使用接口来描述，请参考下面的代码：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 可被写入的抽象</span></div><div class="line"><span class="keyword">interface</span> Writer &#123;</div><div class="line">    write(p: Buffer): <span class="built_in">void</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 可被关闭的抽象</span></div><div class="line"><span class="keyword">interface</span> Closer &#123;</div><div class="line">    close(error?: <span class="built_in">Error</span>) : <span class="built_in">void</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 实现两个接口</span></div><div class="line"><span class="keyword">class</span> Socket <span class="keyword">implements</span> Writer, Closer &#123;</div><div class="line">    writer: NodeJS.WriteStream;</div><div class="line">    write(data: Buffer): <span class="built_in">void</span> &#123;</div><div class="line">        <span class="keyword">this</span>.writer.write(data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    close(error?: <span class="built_in">Error</span>): <span class="built_in">void</span> &#123;</div><div class="line">        <span class="keyword">this</span>.writer.destroy(error);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 使用Writer的代码, 并不知道Socket和iCloser的存在</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">usingWriter</span>(<span class="params">writer: Writer</span>) </span>&#123;</div><div class="line">    writer.write(<span class="keyword">new</span> Buffer(<span class="string">"Hello"</span>));</div><div class="line">&#125;</div><div class="line"><span class="comment">// 使用iCloser, 并不知道Socket和Writer的存在</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">usingCloser</span>(<span class="params">closer: Closer</span>) </span>&#123;</div><div class="line">    closer.close();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> s = <span class="keyword">new</span> Socket();</div><div class="line">    usingWriter(s);</div><div class="line">    usingCloser(s);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<img src="/2019/09/06/typescript接口/图片1.png" alt="多个类实现一个接口" title="多个类实现一个接口">
+<p>socket 类实现了 writer 接口和 closer 接口，函数 usingWriter 不需要知道内部细节，只需要知道拥有write方法，函数在使用时传入一个实现了writer 接口的类型，无需关心其他，实现了调用与实现无关。</p>
+<h3 id="多个类实现一个接口"><a href="#多个类实现一个接口" class="headerlink" title="多个类实现一个接口"></a>多个类实现一个接口</h3><p>一个接口的方法，不一定需要由一个类型完全实现，接口的方法可以通过在类型中嵌入其他类型或者结构体来实现。也就是说，使用者并不关心某个接口的方法是通过一个类型完全实现的，还是通过多个结构嵌入到一个结构体中拼凑起来共同实现的。</p>
+<p>Service 接口定义了两个方法：一个是开启服务的方法（Start()），一个是输出日志的方法（Log()）。使用 GameService 类来实现 Service，GameService 自己的结构只能实现 Start() 方法，而 Service 接口中的 Log() 方法已经被一个能输出日志的日志器（Logger）实现了，无须再进行 GameService 封装，或者重新实现一遍。所以，选择将 Logger 嵌入到 GameService 能最大程度地避免代码冗余，简化代码结构。详细实现过程如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 一个服务需要满足能够开启和写日志的功能</span></div><div class="line"><span class="keyword">interface</span> Service&#123;</div><div class="line">    Start()  <span class="comment">// 开启服务</span></div><div class="line">    Log(<span class="built_in">string</span>)  <span class="comment">// 日志输出</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// 日志器</span></div><div class="line"><span class="keyword">class</span> Logger&#123;</div><div class="line">    <span class="comment">// 实现Service的Log()方法</span></div><div class="line">    Log(l: <span class="built_in">string</span>) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 游戏服务</span></div><div class="line"><span class="keyword">class</span> GameService <span class="keyword">extends</span> Logger &#123;</div><div class="line">    <span class="comment">// 实现Service的Start()方法</span></div><div class="line">    Start() &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> s: Service = <span class="keyword">new</span> GameService();</div><div class="line">s.Start()</div><div class="line">s.Log(<span class="string">"Hello"</span>)</div></pre></td></tr></table></figure>
+<img src="/2019/09/06/typescript接口/图片2.png" alt="多个类实现一个接口" title="多个类实现一个接口">
+<p>通过接口的方式，分离了接口内和接口外的环境，使得系统设计可以更加容易的分解。</p>
+<h3 id="用接口实现一个排序系统"><a href="#用接口实现一个排序系统" class="headerlink" title="用接口实现一个排序系统"></a>用接口实现一个排序系统</h3><p>下面我们来用接口实现一个排序系统，简单的来说排序就是要遍历集合中的所有元素，比较元素之间的大小或某种次序，移动元素的相应的位置，使整个集合有序的操作。先定义出可排序的基本条件，可被遍历，大小比较，移动元素。声明一个排序接口如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> Sort &#123;</div><div class="line">    <span class="comment">// 获取元素数量</span></div><div class="line">    Len(): <span class="built_in">number</span>;</div><div class="line">    <span class="comment">// 小于比较</span></div><div class="line">    Less(i: <span class="built_in">number</span>, j: <span class="built_in">number</span>): <span class="built_in">boolean</span>;</div><div class="line">    <span class="comment">// 交换元素</span></div><div class="line">    Swap(i: <span class="built_in">number</span>, j: <span class="built_in">number</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>声明完接口之后，我们就可以对接口提供的逻辑进行使用了。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 这里是一个简单的冒泡排序</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">data: Sort</span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; data.Len(); i++) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; data.Len(); j++) &#123;</div><div class="line">            <span class="keyword">if</span> (data.Less(i, j)) &#123;</div><div class="line">                data.Swap(i, j);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下一步就是实现接口，这是内部逻辑的填充，接口只是一个声明，无法执行相应的逻辑。在编译成 JavaScript 后，相应的接口也会被檫除。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 第一个实现的是对字符串的排序</span></div><div class="line"><span class="keyword">class</span> MyStringList <span class="keyword">implements</span> Sort &#123;</div><div class="line">    <span class="comment">// 声明字符串数组</span></div><div class="line">    List: <span class="built_in">string</span>[];</div><div class="line">    <span class="keyword">constructor</span>(<span class="params">List: <span class="built_in">string</span>[]</span>) &#123;</div><div class="line">        <span class="keyword">this</span>.List = List;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 获取字符串数组的长度</span></div><div class="line">    Len() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.List.length;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 字符串大小比较的规则</span></div><div class="line">    Less(i: <span class="built_in">number</span>, j: <span class="built_in">number</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.List[i] &lt; <span class="keyword">this</span>.List[j];</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 交换</span></div><div class="line">    Swap(i: <span class="built_in">number</span>, j: <span class="built_in">number</span>) &#123;</div><div class="line">        [<span class="keyword">this</span>.List[i], <span class="keyword">this</span>.List[j]] = [<span class="keyword">this</span>.List[j], <span class="keyword">this</span>.List[i]];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所有的工作都已经做完了，下面我们来测试一下实际效果。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> names = <span class="keyword">new</span> MyStringList([</div><div class="line">    <span class="string">"3. three sheep"</span>,</div><div class="line">    <span class="string">"5. five sheep"</span>,</div><div class="line">    <span class="string">"2. two sheep"</span>,</div><div class="line">    <span class="string">"4. four sheep"</span>,</div><div class="line">    <span class="string">"1. one sheep"</span></div><div class="line">]);</div><div class="line"></div><div class="line">sort(names);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(names);</div></pre></td></tr></table></figure>
+<p>很好地完成了排序工作，现在这里有一个数组，同样也需要排序。现在不比费心去重新去写一遍，在原来排序接口的接口上添加数组的排序逻辑即可。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 数组实现排序的接口</span></div><div class="line"><span class="keyword">class</span> myArray <span class="keyword">implements</span> Sort &#123;</div><div class="line">    List: <span class="built_in">number</span>[];</div><div class="line">    <span class="keyword">constructor</span>(<span class="params">List: <span class="built_in">number</span>[]</span>) &#123;</div><div class="line">        <span class="keyword">this</span>.List = List;</div><div class="line">    &#125;</div><div class="line">    Len() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.List.length;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 注意这里虽然逻辑相同，但是数字大小的比较，而上面是字符串的比较</span></div><div class="line">    Less(i: <span class="built_in">number</span>, j: <span class="built_in">number</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.List[i] &lt; <span class="keyword">this</span>.List[j];</div><div class="line">    &#125;</div><div class="line">    Swap(i: <span class="built_in">number</span>, j: <span class="built_in">number</span>) &#123;</div><div class="line">        [<span class="keyword">this</span>.List[i], <span class="keyword">this</span>.List[j]] = [<span class="keyword">this</span>.List[j], <span class="keyword">this</span>.List[i]];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>同样地检测一下排序效果，给定一个数组。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> list = <span class="keyword">new</span> myArray([<span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>]);</div><div class="line">sort(list);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(list);</div></pre></td></tr></table></figure>
+<p>现在我们把排序的概念延伸一下，上面的排序系统不仅能排序数组和字符串数组这种简单的数据结构，还能排序其他的数据结构，比如常见的对象。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 声明军队的分类</span></div><div class="line"><span class="keyword">enum</span> ArmyKind&#123;</div><div class="line">    None = <span class="number">1</span>,</div><div class="line">    Air,</div><div class="line">    Sea,</div><div class="line">    land</div><div class="line">&#125;</div><div class="line"><span class="comment">// 定义一个军队</span></div><div class="line"><span class="keyword">class</span> Army &#123;</div><div class="line">    name: <span class="built_in">string</span>;</div><div class="line">    kind: ArmyKind;</div><div class="line">    <span class="keyword">constructor</span>(<span class="params">name : <span class="built_in">string</span>, kind : <span class="built_in">number</span></span>) &#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.kind = kind;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 实现排序逻辑</span></div><div class="line"><span class="keyword">class</span> Armies <span class="keyword">implements</span> Sort &#123;</div><div class="line">    armyList: Army[];</div><div class="line">    <span class="keyword">constructor</span>(<span class="params">armyList: Army[]</span>) &#123;</div><div class="line">        <span class="keyword">this</span>.armyList = armyList;</div><div class="line">    &#125;</div><div class="line">    Len() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.armyList.length;</div><div class="line">    &#125;</div><div class="line">    Less(i: <span class="built_in">number</span>, j: <span class="built_in">number</span>) &#123;</div><div class="line">        <span class="keyword">let</span> s = <span class="keyword">this</span>.armyList;</div><div class="line">        <span class="comment">// 如果军队的分类不一致时, 优先对分类进行排序</span></div><div class="line">        <span class="keyword">if</span> (s[i].kind != s[j].kind) &#123;</div><div class="line">            <span class="keyword">return</span> s[i].kind &lt; s[j].kind;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 默认按军队名字字符升序排列</span></div><div class="line">        <span class="keyword">return</span> s[i].name &lt; s[j].name;</div><div class="line">    &#125;</div><div class="line">    Swap(i: <span class="built_in">number</span>, j: <span class="built_in">number</span>) &#123;</div><div class="line">        <span class="keyword">let</span> s = <span class="keyword">this</span>.armyList;</div><div class="line">        [s[i], s[j]] = [s[j], s[i]];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面看看效果会怎么样，给出一个<code>Armies</code>类的实例。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> armies = <span class="keyword">new</span> Armies([</div><div class="line">    <span class="keyword">new</span> Army(<span class="string">"A3"</span>, ArmyKind.Air),</div><div class="line">    <span class="keyword">new</span> Army(<span class="string">"A8"</span>, ArmyKind.Air),</div><div class="line">    <span class="keyword">new</span> Army(<span class="string">"S1"</span>, ArmyKind.Sea),</div><div class="line">    <span class="keyword">new</span> Army(<span class="string">"S4"</span>, ArmyKind.Sea),</div><div class="line">    <span class="keyword">new</span> Army(<span class="string">"L2"</span>, ArmyKind.land)</div><div class="line">]);</div><div class="line"><span class="comment">// 使用sort包进行排序</span></div><div class="line">sort(armies);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(armies);</div></pre></td></tr></table></figure>
+<p>MyStringList、MyArray和Armies类都实现了sort接口，可见他们有一种共性。这种共性抽象出了一个Sort概念（可被排序的基本要求），接下来用MyStringList、MyArray和Armies类去实现sort接口的要求，使得提供len、less和swap方法的类就可以被排序。</p>
+<p>在排序算法中使用Sort接口即可完成排序，无需关心其实现，直接与MyStringList、MyArray和Armies类提供的上层抽象sort相关联。调用时，只要传入MyStringList、MyArray和Armies类的实例即可。同样抽象类也可以，MyStringList、MyArray和Armies类都继承同一个抽象类，排序算法算法直接与抽象类打交道。当然还有更高效的排序算法，这里就不一一列举了。</p>
+<p>这样抽象就建立起来了，通过抽象类和接口去描述抽象，使得系统设计可以更加容易的分解和解耦，为大型系统的设计铺路。</p>
+<h2 id="接口与抽象类的区别"><a href="#接口与抽象类的区别" class="headerlink" title="接口与抽象类的区别"></a>接口与抽象类的区别</h2><p>对于面向对象编程来说，<strong>抽象</strong>是它的一大特征之一。在面对对象的语言Java中，可以通过两种形式来体现OOP的抽象：接口和抽象类。这两者有太多相似的地方，又有太多不同的地方。typescript同样也实现了接口和抽象类，两种语言的概念差别不大。</p>
+<p>抽象类是什么：</p>
+<blockquote>
+<p>抽象类是从多个具体类中抽象出来的父类，它具有更高层次的抽象。从多个具有相同特征的类中抽象出一个抽象类，以这个抽象类作为其子类的模板，从而避免了子类的随意性。抽象类不能创建实例，它只能作为父类被继承。</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> Book &#123;</div><div class="line">    pages: Page[];</div><div class="line">    currentPage = <span class="number">0</span>;</div><div class="line">    open(pageNumber: <span class="built_in">number</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.pages.filter(<span class="function"><span class="params">value</span> =&gt;</span> value.page = pageNumber);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    close() &#123;</div><div class="line">        <span class="keyword">this</span>.currentPage = <span class="number">0</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.pages[<span class="keyword">this</span>.currentPage];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Page&#123;</div><div class="line">    page = <span class="number">0</span>;</div><div class="line">    content = <span class="string">""</span>;</div><div class="line">    <span class="keyword">constructor</span>(<span class="params">page: <span class="built_in">number</span>, content: <span class="built_in">string</span></span>) &#123;</div><div class="line">        <span class="keyword">this</span>.page = page;</div><div class="line">        <span class="keyword">this</span>.content = content;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> mathBook <span class="keyword">extends</span> Book &#123;</div><div class="line">    name: <span class="built_in">string</span>;</div><div class="line">    <span class="keyword">constructor</span>(<span class="params">name: <span class="built_in">string</span>, pages: Page[]</span>) &#123;</div><div class="line">        <span class="keyword">super</span>();</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.pages = pages;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> math = <span class="keyword">new</span> mathBook(<span class="string">"math"</span>, [</div><div class="line">    <span class="keyword">new</span> Page(<span class="number">1</span>, <span class="string">"3 + 5"</span>),</div><div class="line">    <span class="keyword">new</span> Page(<span class="number">2</span>, <span class="string">" 3 - 1"</span>),</div><div class="line">    <span class="keyword">new</span> Page(<span class="number">3</span>, <span class="string">" 3 * 2"</span>),</div><div class="line">    <span class="keyword">new</span> Page(<span class="number">4</span>, <span class="string">" 9 / 3"</span>),</div><div class="line">]);</div><div class="line">math.open(<span class="number">3</span>);</div><div class="line">math.close();</div><div class="line"></div><div class="line"><span class="keyword">class</span> englishBook <span class="keyword">extends</span> Book &#123;</div><div class="line">    name: <span class="built_in">string</span>;</div><div class="line">    <span class="keyword">constructor</span>(<span class="params">name: <span class="built_in">string</span>, pages: Page[]</span>) &#123;</div><div class="line">        <span class="keyword">super</span>();</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.pages = pages;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> english = <span class="keyword">new</span> englishBook(<span class="string">"english"</span>, [</div><div class="line">    <span class="keyword">new</span> Page(<span class="number">1</span>, <span class="string">"hello"</span>),</div><div class="line">    <span class="keyword">new</span> Page(<span class="number">2</span>, <span class="string">"china"</span>),</div><div class="line">    <span class="keyword">new</span> Page(<span class="number">3</span>, <span class="string">"food"</span>),</div><div class="line">    <span class="keyword">new</span> Page(<span class="number">4</span>, <span class="string">"weather"</span>),</div><div class="line">])</div><div class="line"></div><div class="line">english.open(<span class="number">2</span>);</div><div class="line">english.close();</div></pre></td></tr></table></figure>
+<p>抽象类<code>Book</code>封装了书的概念，书可以被打开和关闭，数学书和英语书继承了书的概念，符合我们现实生活中的观点。</p>
+<p>接口是什么：</p>
+<blockquote>
+<p>接口本身是一种对行为的一种抽象，实现接口的类将按照接口的规范约束行为。我们开发中经常说给别人提供接口，而不是说给别人提供实现类。我们将属性私有，通过接口中的行为来操作。这样封装了内部的实现。当我们对外提供接口，而不是直接暴露实现类，这样调用的类就实现了与提供类之间的解耦。</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> Open&#123;</div><div class="line">    open(): <span class="built_in">void</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Door <span class="keyword">implements</span> Open&#123;</div><div class="line">   <span class="keyword">private</span> closed = <span class="literal">true</span>;</div><div class="line">    open() &#123;</div><div class="line">        <span class="keyword">this</span>.closed = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    close() &#123;</div><div class="line">        <span class="keyword">this</span>.closed = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Computer <span class="keyword">implements</span> Open&#123;</div><div class="line">    open() &#123;</div><div class="line">        <span class="keyword">this</span>.setup();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">private</span> setup() &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"hello world"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> door: Open = <span class="keyword">new</span> Door();</div><div class="line">door.open();</div><div class="line"></div><div class="line"><span class="keyword">let</span> mac: Open = <span class="keyword">new</span> Computer();</div><div class="line">mac.open();</div></pre></td></tr></table></figure>
+<p>上面的两个类<code>Door</code>和<code>Computer</code>很难有共同特点，但是有一个<code>open</code>方法，使用抽象类固然可以，但是一个功能一个继承，多重继承会带来很多麻烦，使用接口能更加细粒度地描述抽象，即接口比抽象类更加抽象和灵活，细数两者之间的区别：</p>
+<ol>
+<li>抽象类可以提供成员方法的实现细节，而接口中只能存在public abstract方法；</li>
+<li>抽象类中的成员变量可以是各种类型的，而接口中的成员变量只能是public static final类型的；</li>
+<li>接口中不能含有静态代码块以及静态方法，而抽象类可以有静态代码块和静态方法；</li>
+<li>一个类只能继承一个抽象类，而一个类却可以实现多个接口。</li>
+</ol>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://c.biancheng.net/view/79.html" target="_blank" rel="external">Go语言类型与接口的关系</a></p>
+<p><a href="http://c.biancheng.net/view/81.html" target="_blank" rel="external">Go语言排序</a></p>
+<p><a href="https://blog.csdn.net/universe_ant/article/details/59491738" target="_blank" rel="external">深入理解Java的接口和抽象类</a></p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://hqiwen.github.io">贺启文</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://hqiwen.github.io/2019/09/06/typescript接口/">https://hqiwen.github.io/2019/09/06/typescript接口/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/typescript-接口/">typescript 接口</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2019/03/10/数据结构之排序/">
+        <span class="next-text nav-default">数据结构之排序</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:1726564970@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="/qstund@gmial.com" class="iconfont icon-google" title="google"></a>
+        
+      
+    
+      
+        
+          <a href="https://github.com/hqiwen" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2019
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">贺启文</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'https://hqiwen.github.io/2019/09/06/typescript接口/';
+        this.page.identifier = '2019/09/06/typescript接口/';
+        this.page.title = 'typescript接口';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//https-hqiwen-github-io.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+
+  </body>
+</html>
