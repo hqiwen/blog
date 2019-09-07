@@ -108,7 +108,7 @@
         <li class="mobile-menu-item">
           
           
-            首页
+            Home
           
         </li>
       </a>
@@ -117,7 +117,7 @@
         <li class="mobile-menu-item">
           
           
-            归档
+            Archives
           
         </li>
       </a>
@@ -165,7 +165,7 @@
           <a class="menu-item-link" href="/">
             
             
-              首页
+              Home
             
           </a>
         </li>
@@ -174,7 +174,7 @@
           <a class="menu-item-link" href="/archives/">
             
             
-              归档
+              Archives
             
           </a>
         </li>
@@ -249,7 +249,7 @@
     
     
   <div class="post-toc" id="post-toc">
-    <h2 class="post-toc-title">文章目录</h2>
+    <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#具名接口"><span class="toc-text">具名接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的接口"><span class="toc-text">对象的接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数的接口"><span class="toc-text">函数的接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性的约束"><span class="toc-text">属性的约束</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#可选属性"><span class="toc-text">可选属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#只读属性"><span class="toc-text">只读属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#额外的属性检查-对象字面量和数组"><span class="toc-text">额外的属性检查(对象字面量和数组)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现接口"><span class="toc-text">实现接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类实现接口"><span class="toc-text">类实现接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接口继承接口"><span class="toc-text">接口继承接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接口继承类"><span class="toc-text">接口继承类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类与接口的关系"><span class="toc-text">类与接口的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一个类实现多个接口"><span class="toc-text">一个类实现多个接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多个类实现一个接口"><span class="toc-text">多个类实现一个接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用接口实现一个排序系统"><span class="toc-text">用接口实现一个排序系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口与抽象类的区别"><span class="toc-text">接口与抽象类的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
     </div>
@@ -284,8 +284,7 @@
 <h2 id="属性的约束"><a href="#属性的约束" class="headerlink" title="属性的约束"></a>属性的约束</h2><p>检查对象的属性分为必须、可选、只读，函数的参数有必须、可选之分</p>
 <h3 id="可选属性"><a href="#可选属性" class="headerlink" title="可选属性"></a>可选属性</h3><p>有时候不确定某个属性是否存在时，在声明的属性后面加入一个<code>?</code>，就可以使属性变得可选。</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> User&#123;</div><div class="line">    name: <span class="built_in">string</span>;</div><div class="line">    id?: <span class="built_in">number</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> user: User = &#123;</div><div class="line">    name: <span class="string">"boy"</span>,</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> user1:User = &#123;</div><div class="line">    name: <span class="string">"jack"</span>,</div><div class="line">    id: <span class="number">4</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createUser</span>(<span class="params">name: <span class="built_in">string</span>, id?: <span class="built_in">number</span></span>): <span class="title">User</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        name: name,</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>检查条件为<code>function test(obj) { return (obj === {} &amp;&amp; obj.name !== undefined &amp;&amp; obj.id !== undefined;) || obj === {} &amp;&amp; obj.id !== undefined;}</code></p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> User&#123;</div><div class="line">    name: <span class="built_in">string</span>;</div><div class="line">    id?: <span class="built_in">number</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> app;</div><div class="line"><span class="keyword">let</span> user1: User = (app = &#123;</div><div class="line">    name: <span class="string">"ccc"</span>,</div><div class="line">    card: <span class="string">"d"</span>,</div><div class="line">    <span class="built_in">number</span>: <span class="number">1</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//Error: card属性不存在User类型里面</span></div><div class="line"><span class="built_in">console</span>.log(user1.card);</div></pre></td></tr></table></figure>
+<p>检查条件为<code>function test(obj) { return (obj === {} &amp;&amp; obj.name !== undefined &amp;&amp; obj.id !== undefined;) || obj === {} &amp;&amp; obj.id !== undefined;}</code><br><a id="more"></a><br><figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> User&#123;</div><div class="line">    name: <span class="built_in">string</span>;</div><div class="line">    id?: <span class="built_in">number</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> app;</div><div class="line"><span class="keyword">let</span> user1: User = (app = &#123;</div><div class="line">    name: <span class="string">"ccc"</span>,</div><div class="line">    card: <span class="string">"d"</span>,</div><div class="line">    <span class="built_in">number</span>: <span class="number">1</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//Error: card属性不存在User类型里面</span></div><div class="line"><span class="built_in">console</span>.log(user1.card);</div></pre></td></tr></table></figure></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app;</div><div class="line"><span class="keyword">var</span> user1 = (app = &#123;</div><div class="line">    name: <span class="string">"ccc"</span>,</div><div class="line">    card: <span class="string">"d"</span>,</div><div class="line">    number: <span class="number">1</span></div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(user1.card);<span class="comment">// "d"</span></div></pre></td></tr></table></figure>
 <p>虽然声明user1对象时，没有报错，但是使用除了name和id之外的属性时，会报错，这里看到app对象<strong>绕过</strong>了User的类型检查，但是强制翻译ts文件（不推荐这么做），可以得到<code>user1.card</code>的值为d,虽然typescript在类型检查阶段报错了，但是并不程序影响正确执行</p>
 <h3 id="只读属性"><a href="#只读属性" class="headerlink" title="只读属性"></a>只读属性</h3><p>当不希望属性的值被更改时，可以设置属性可读。</p>
@@ -371,15 +370,15 @@
 
   <div class="post-copyright">
     <p class="copyright-item">
-      <span>原文作者: </span>
+      <span>Author: </span>
       <a href="https://hqiwen.github.io">贺启文</a>
     </p>
     <p class="copyright-item">
-      <span>原文链接: </span>
+      <span>Link: </span>
       <a href="https://hqiwen.github.io/2019/09/06/typescript接口/">https://hqiwen.github.io/2019/09/06/typescript接口/</a>
     </p>
     <p class="copyright-item">
-      <span>许可协议: </span>
+      <span>License: </span>
       
       <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
     </p>
@@ -407,7 +406,7 @@
     
       <a class="next" href="/2019/03/10/数据结构之排序/">
         <span class="next-text nav-default">数据结构之排序</span>
-        <span class="prev-text nav-mobile">下一篇</span>
+        <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
     
@@ -487,11 +486,11 @@
 
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
+    Theme - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
 
