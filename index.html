@@ -219,6 +219,132 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/05/08/typescript变量声明/">typescript变量声明</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-08
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/编程/">编程</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2020/05/08/typescript变量声明/"
+             data-title="typescript变量声明">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>前一章我们写了一个相加程序，可以完成数字和数字的相加，也可以完成字符串和字符串的相加，根据第一个参数，提示第二个参数的类型。如果把一个数字和字符串相加，编译器就会报错，是不是很智能呢？细心的会发现声明了一个类型：<code>type operator = string | number;</code></p>
+<blockquote>
+<p>type是声明一个类型的关键字，不会新建一个类型，它创建了一个新名字来引用那个类型。</p>
+</blockquote>
+<p>这是我们完成类型检测的关键。下面我们来系统地学习typescript类型的奥秘，其中插入ES6语法的拓展。</p>
+<h2 id="声明变量let、var、const"><a href="#声明变量let、var、const" class="headerlink" title="声明变量let、var、const"></a>声明变量let、var、const</h2><h3 id="var导致的声明提升"><a href="#var导致的声明提升" class="headerlink" title="var导致的声明提升"></a>var导致的声明提升</h3><p>在ES6之前的变量声明,var的使用,看看下面的道理：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(a);<span class="comment">// undefined</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="built_in">console</span>.log(a);<span class="comment">// a = 1;</span></div><div class="line"><span class="built_in">console</span>.log(b);<span class="comment">//Uncaught ReferenceError: b is not defined,引用错误b没有被声明</span></div></pre></td></tr></table></figure>
+<p>a和b打印出来的值不一样，为何？在javascript运行的过程中先会执行一遍预解析，使得变量a会被录入，但是没有执行赋值，故第一次打印a的值为undefined,赋值后打印a的值为1，变量b无声明，得到b is not defined。</p>
+<h3 id="经典闭包问题的解决"><a href="#经典闭包问题的解决" class="headerlink" title="经典闭包问题的解决"></a>经典闭包问题的解决</h3><p>在JavaScript的面试中经常会碰到闭包问题，你能回答出下面的结果吗？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(i);</div><div class="line">    &#125;, <span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>答案是5个5，思考一下。<br>
+          <div class="read-more">
+            <a href="/2020/05/08/typescript变量声明/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/05/08/typescript介绍/">typescript介绍</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-08
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/编程/">编程</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2020/05/08/typescript介绍/"
+             data-title="typescript介绍">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>TypeScript 简单来说是一门编程语言，与你熟知的 JavaScript、Java 和 C++ 之类的编程语言一样。既然有这么多的语言可供选择，为什么又要新创建一门语言？先看看官网对 TypeScript 的描述，TypeScript 是 JavaScript 类型的超集，它可以编译成纯JavaScript。那么为什么需要使用 TypeScript 而不是 JavaScript 呢？下面我将说服你为什么要使用 TypeScript。</p>
+<h2 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h2><h3 id="javaScript是一门好语言吗"><a href="#javaScript是一门好语言吗" class="headerlink" title="javaScript是一门好语言吗"></a>javaScript是一门好语言吗</h3><p>对于这个问题，不同的人有不同的想法。JavaScript 作为最多人使用的编程语言，也是在网页端取得绝对地位的语言，常常因为其动态类型、隐式转换而受到诟病。下面简要说明，一个完整的 JavaScript 包括三个不同的部分组成，核心（ESMAScript语言,简称ES），文档对象模型（DOM）和浏览器对象模型（BOM）,ESMAScript中有5种简单数据类型：undefined，null，boolean,number和string。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> result1 = (<span class="string">"55"</span> == <span class="number">55</span>);  <span class="comment">//true,因为字符串“55”被转换数值55后相等</span></div><div class="line"><span class="keyword">var</span> result2 = (<span class="string">"55"</span> === <span class="number">55</span>);   <span class="comment">//false, 因为不同的类型不相等</span></div></pre></td></tr></table></figure>
+<p>这看起来令人困惑，明明差不多的操作，得到的结果却截然相反，如果由于疏忽，少写了一个等号，会得到令人检测不到的 Bug。当然，你可能精通JavaScript，不会犯这种低级错误，但是如果和你合作的某个人，你能真正地保证他不会犯这种错误吗？</p>
+<h3 id="CoffeeScript的出现"><a href="#CoffeeScript的出现" class="headerlink" title="CoffeeScript的出现"></a>CoffeeScript的出现</h3><p>为了减少犯这种错误的可能性，出现了CoffeeScript。CoffeeScript是一套javaScript的转译语言，于2009 年 12 月 24 日, 提交版本 0.0.1 ，创建者 Jeremy Ashkenas 戏称它是-JavaScript 的不那么铺张的小兄弟。因为 CoffeeScript 会将类似 Ruby 语法的代码编译成 JavaScript，而且大部分结构都相似，但不同的是 CoffeeScript 拥有更严格的语法。<br>在coffeeScript中，由于操作符<strong>==</strong>常常带来不准确的约束, 不容易达到效果, 而且跟其他语言当中意思不一致, CoffeeScript 会把 == 编译为 ===, 把 != 变异为 !==. 此外, is 编译为 ===, 而 isnt 编译为 !==，这样就避免了问题。<br>随着项目的日渐拓展，代码量越来越多，有了这样的代码：<br>
+          <div class="read-more">
+            <a href="/2020/05/08/typescript介绍/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2019/09/07/koa装饰器/">koa装饰器</a>
         
       </h1>
@@ -758,124 +884,6 @@
   </article>
 
     
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/10/23/一个简易的打包器/">一个简易的打包器</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-10-23
-        </span>
-        
-          <div class="post-category">
-            
-              <a href="/categories/编程/">编程</a>
-            
-          </div>
-        
-        
-        <div class="post-visits"
-             data-url="/2018/10/23/一个简易的打包器/"
-             data-title="一个简易的打包器">
-            阅读次数
-          </div>
-        
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h2 id="依赖解析"><a href="#依赖解析" class="headerlink" title="依赖解析"></a>依赖解析</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> detective = <span class="built_in">require</span>(<span class="string">"detective"</span>);</div><div class="line"><span class="keyword">const</span> requires = detective(source);</div></pre></td></tr></table></figure>
-<p>深度遍历寻找依赖，返回一个依赖数组</p>
-<h2 id="源码比较简单，主要由三个函数构成"><a href="#源码比较简单，主要由三个函数构成" class="headerlink" title="源码比较简单，主要由三个函数构成"></a>源码比较简单，主要由三个函数构成</h2><h3 id="createModuleObject"><a href="#createModuleObject" class="headerlink" title="createModuleObject()"></a>createModuleObject()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createModuleObject</span>(<span class="params">filePath</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> source = fs.readFileSync(filePath, <span class="string">"utf-8"</span>);</div><div class="line">  <span class="keyword">const</span> requires = detective(source);</div><div class="line">  <span class="keyword">const</span> id = ID++;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    id,</div><div class="line">    filePath,</div><div class="line">    source,</div><div class="line">    requires</div><div class="line">  &#125;;</div></pre></td></tr></table></figure>
-<p> 从目录信息构造需要的模块信息,传入一个文件path路径，返回一个而文件模块对象ModuleObject</p>
-<h3 id="getModules"><a href="#getModules" class="headerlink" title="getModules()"></a>getModules()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getModules</span>(<span class="params">entry</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> rootModule = createModuleObject(entry);</div><div class="line">  <span class="keyword">const</span> modules = [rootModule];</div><div class="line">  <span class="comment">//遍历依赖，把所有引用文件变成模块对象</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> <span class="built_in">module</span> <span class="keyword">of</span> modules) &#123;</div><div class="line">    <span class="built_in">module</span>.map = &#123;&#125;;</div><div class="line">    <span class="built_in">module</span>.requires.forEach(<span class="function"><span class="params">dependency</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">const</span> basedir = path.dirname(<span class="built_in">module</span>.filePath);</div><div class="line">      <span class="keyword">const</span> dependencyPath = resolve(dependency, &#123; basedir &#125;);</div><div class="line">      <span class="keyword">const</span> dependencyObject = createModuleObject(dependencyPath);</div><div class="line"></div><div class="line">      <span class="built_in">module</span>.map[dependency] = dependencyObject.id;</div><div class="line">      modules.push(dependencyObject);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> modules;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          <div class="read-more">
-            <a href="/2018/10/23/一个简易的打包器/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/06/09/从数据看vue组件/">从数据看vue组件</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-06-09
-        </span>
-        
-          <div class="post-category">
-            
-              <a href="/categories/编程/">编程</a>
-            
-          </div>
-        
-        
-        <div class="post-visits"
-             data-url="/2018/06/09/从数据看vue组件/"
-             data-title="从数据看vue组件">
-            阅读次数
-          </div>
-        
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>三大前端框架 Vue 、react 和 angular，都提到了一个概念——组件，那么什么是组件——组件（Component）是对数据和方法的简单封装。考虑一个页面，有 UI 的渲染，有状态的改变，有事件的监听。组件正是由这三个方面组成的。现在来看一个简单的组件：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//绑定class，进行UI渲染</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span> <span class="attr">v-bind:class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">    //传递message值</div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">    //监听click事件</div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"reverseMessage"</span>&gt;</span>逆转消息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span>&#123;</div><div class="line">    <span class="attribute">margin</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">padding</span>:<span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          <div class="read-more">
-            <a href="/2018/06/09/从数据看vue组件/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
   </section>
 
   
@@ -961,7 +969,7 @@
      
       2015 - 
     
-    2019
+    2020
 
     <span class="heart">
       <i class="iconfont icon-heart"></i>
